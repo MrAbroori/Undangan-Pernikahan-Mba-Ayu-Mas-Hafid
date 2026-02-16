@@ -1,0 +1,71 @@
+/* --- 1. SETTING DASAR & FONT --- */
+:root {
+    --warna-utama: #FDFBF7; /* Ivory Cream */
+    --warna-teks: #4A4A4A;  /* Abu Gelap (Elegan) */
+    --warna-aksen: #C5A059; /* Emas Kalem (Luxury) */
+}
+
+body {
+    font-family: 'Work Sans', sans-serif; /* Font untuk teks biasa */
+    background-color: var(--warna-utama);
+    color: var(--warna-teks);
+    overflow-x: hidden; /* Mencegah geser kanan-kiri */
+}
+
+/* Font Estetik untuk Judul/Nama */
+.font-aesthetic {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--warna-aksen);
+}
+
+/* --- 2. HERO SECTION (COVER DEPAN) --- */
+.hero {
+    /* Masukkan foto prewedding background di sini nanti */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Layar Penuh */
+    position: fixed; /* Agar menutupi konten lain sebelum dibuka */
+    top: 0;
+    left: 0;
+    z-index: 9999; /* Paling depan */
+    transition: all 1s ease-in-out; /* Efek transisi halus saat dibuka */
+}
+
+/* Teks di Hero */
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-top: 10px;
+}
+
+/* --- 3. TOMBOL & KOMPONEN --- */
+.btn-primary {
+    background-color: var(--warna-aksen);
+    border-color: var(--warna-aksen);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #b08d3e; /* Warna saat mouse hover */
+    border-color: #b08d3e;
+}
+
+/* Tombol Musik Putar-putar */
+#audio-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.fa-spin {
+    animation: fa-spin 4s infinite linear;
+}
+
+/* --- 4. ANIMASI BUKA UNDANGAN --- */
+/* Class ini akan ditambahkan lewat Javascript nanti */
+.hero-terbuka {
+    transform: translateY(-100%); /* Geser ke atas sampai hilang */
+    opacity: 0;
+}
