@@ -94,3 +94,36 @@ form.addEventListener('submit', e => {
         btnKirim.disabled = false;
     });
 });
+
+// --- 5. COUNTDOWN TIMER ---
+// Tanggal target: Tahun, Bulan (0-11), Tanggal, Jam, Menit
+// Ingat: Bulan di JS mulai dari 0 (Januari = 0, Oktober = 9)
+const tanggalTujuan = new Date('Apr 04, 2026 08:00:00').getTime();
+
+const hitungMundur = setInterval(function() {
+    const sekarang = new Date().getTime();
+    const selisih = tanggalTujuan - sekarang;
+
+    // Hitung waktu
+    const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+    const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+    const detik = Math.floor((selisih % (1000 * 60)) / 1000);
+
+    // Masukkan ke dalam elemen HTML
+    document.getElementById("days").innerText = formatWaktu(hari);
+    document.getElementById("hours").innerText = formatWaktu(jam);
+    document.getElementById("minutes").innerText = formatWaktu(menit);
+    document.getElementById("seconds").innerText = formatWaktu(detik);
+
+    // Jika waktu habis
+    if (selisih < 0) {
+        clearInterval(hitungMundur);
+        document.getElementById("countdown").innerHTML = "<h3 class='text-cream'>Alhamdulillah, Acara Telah Selesai</h3>";
+    }
+}, 1000);
+
+// Fungsi agar angka satuan jadi 01, 02, dst.
+function formatWaktu(waktu) {
+    return waktu < 10 ? "0" + waktu : waktu;
+}

@@ -1,71 +1,224 @@
-/* --- 1. SETTING DASAR & FONT --- */
+/* --- 1. VARIABEL WARNA --- */
 :root {
-    --warna-utama: #FDFBF7; /* Ivory Cream */
-    --warna-teks: #4A4A4A;  /* Abu Gelap (Elegan) */
-    --warna-aksen: #C5A059; /* Emas Kalem (Luxury) */
+    --warna-cream: #faf3dd;    /* Cream Terang */
+    --warna-hijau: #5b6946;    /* Hijau Sage Gelap */
+    --warna-teks-gelap: #4A4A4A; 
 }
 
 body {
-    font-family: 'Work Sans', sans-serif; /* Font untuk teks biasa */
-    background-color: var(--warna-utama);
-    color: var(--warna-teks);
-    overflow-x: hidden; /* Mencegah geser kanan-kiri */
+    font-family: 'Work Sans', sans-serif;
+    background-color: var(--warna-cream);
+    color: var(--warna-teks-gelap);
+    overflow-x: hidden;
 }
 
-/* Font Estetik untuk Judul/Nama */
+/* Font Estetik */
 .font-aesthetic {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
-    color: var(--warna-aksen);
 }
 
-/* --- 2. HERO SECTION (COVER DEPAN) --- */
-.hero {
-    /* Masukkan foto prewedding background di sini nanti */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('assets/background.jpg'); 
-    background-size: cover;
-    background-position: center;
-    height: 100vh; /* Layar Penuh */
-    position: fixed; /* Agar menutupi konten lain sebelum dibuka */
+/* --- 2. HERO SECTION (SPLIT COLOR) --- */
+.hero-container {
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999; /* Paling depan */
-    transition: all 1s ease-in-out; /* Efek transisi halus saat dibuka */
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: transform 1s ease-in-out;
 }
 
-/* Teks di Hero */
-.hero h1 {
+/* Bagian Atas (Cream) - 60% Tinggi Layar */
+.hero-top {
+    height: 60%;
+    background-color: var(--warna-cream);
+    color: var(--warna-hijau);
+    position: relative;
+}
+
+.inisial-box {
+    position: relative;
+}
+
+.inisial-huruf {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    margin-top: 10px;
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--warna-hijau);
 }
 
-/* --- 3. TOMBOL & KOMPONEN --- */
-.btn-primary {
-    background-color: var(--warna-aksen);
-    border-color: var(--warna-aksen);
+/* Pengaturan Gambar Bunga */
+.bunga-tengah {
+    width: 80px; /* Atur ukuran bunga di sini */
+    height: auto;
+    object-fit: contain;
+}
+
+.text-dark-green {
+    color: var(--warna-hijau);
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Bagian Bawah (Hijau) - 40% Tinggi Layar */
+.hero-bottom {
+    height: 40%;
+    background-color: var(--warna-hijau);
+    color: var(--warna-cream);
+    border-top-left-radius: 40px; /* Lengkungan cantik di perbatasan */
+    border-top-right-radius: 40px;
+    box-shadow: 0px -5px 20px rgba(0,0,0,0.1);
+}
+
+.nama-tamu {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 10px 0;
+    color: #ffffff; /* Putih biar kontras di hijau */
+}
+
+/* --- 3. CUSTOM BUTTONS --- */
+.btn-custom-cream {
+    background-color: var(--warna-cream);
+    color: var(--warna-hijau);
+    border: none;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+.btn-custom-cream:hover {
+    background-color: #e6dec5;
+    transform: scale(1.05);
+}
+
+.btn-custom-green {
+    background-color: var(--warna-hijau);
+    color: white;
+    border: none;
+}
+
+.btn-custom-green:hover {
+    background-color: #4a573a;
     color: white;
 }
 
-.btn-primary:hover {
-    background-color: #b08d3e; /* Warna saat mouse hover */
-    border-color: #b08d3e;
+.btn-outline-custom {
+    color: var(--warna-hijau);
+    border-color: var(--warna-hijau);
 }
 
-/* Tombol Musik Putar-putar */
-#audio-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-}
-.fa-spin {
-    animation: fa-spin 4s infinite linear;
+.btn-outline-custom:hover {
+    background-color: var(--warna-hijau);
+    color: white;
 }
 
-/* --- 4. ANIMASI BUKA UNDANGAN --- */
-/* Class ini akan ditambahkan lewat Javascript nanti */
-.hero-terbuka {
-    transform: translateY(-100%); /* Geser ke atas sampai hilang */
-    opacity: 0;
+/* --- 4. KONTEN UTAMA --- */
+.mempelai {
+    background-color: var(--warna-cream);
+}
+
+.ampersand {
+    font-size: 4rem;
+    color: var(--warna-hijau);
+}
+
+/* Section Acara (Warna Hijau) */
+.acara {
+    background-color: var(--warna-hijau);
+    color: white;
+}
+
+.text-cream {
+    color: var(--warna-cream);
+}
+
+.card-acara {
+    background-color: rgba(255, 255, 255, 0.95); /* Putih transparan */
+    color: var(--warna-teks-gelap);
+    border: none;
+    border-radius: 15px;
+}
+
+.divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--warna-hijau);
+    opacity: 1;
+    margin: 15px auto;
+}
+
+/* Footer */
+.footer-custom {
+    background-color: #3e4a30; /* Hijau lebih gelap dikit */
+}
+
+/* Floating Music Button */
+#audio-container button {
+    width: 50px;
+    height: 50px;
+    color: var(--warna-hijau);
+}
+
+/* Responsif untuk HP Kecil */
+@media (max-height: 600px) {
+    .hero-top { height: 50%; }
+    .hero-bottom { height: 50%; }
+    .inisial-huruf { font-size: 3.5rem; }
+    .bunga-tengah { width: 50px; }
+}
+
+/* --- 5. COUNTDOWN TIMER (MOBILE OPTIMIZED) --- */
+#countdown {
+    flex-wrap: wrap; /* Agar aman di HP layar sangat kecil */
+}
+
+.time-box {
+    background-color: var(--warna-cream); /* Kotak Cream */
+    color: var(--warna-hijau);            /* Teks Hijau */
+    width: 75px;        /* Lebar fix agar rapi */
+    height: 75px;       /* Tinggi fix agar kotak */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+/* Efek saat disentuh/hover */
+.time-box:hover {
+    transform: translateY(-5px); 
+    background-color: #ffffff;
+}
+
+.time-number {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.8rem; /* Angka besar */
+    font-weight: 700;
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 0.7rem; /* Label kecil */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* Penyesuaian Khusus HP Kecil (misal iPhone SE) */
+@media (max-width: 380px) {
+    .time-box {
+        width: 65px;
+        height: 65px;
+    }
+    .time-number {
+        font-size: 1.5rem;
+    }
 }
