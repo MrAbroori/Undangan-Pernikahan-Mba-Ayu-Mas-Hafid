@@ -1,3 +1,17 @@
+/* --- UPDATE STYLE.CSS PALING ATAS --- */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important; /* KUNCI: Matikan scroll horizontal */
+    position: relative;
+}
+
+/* Pastikan semua section juga tidak melebar */
+section {
+    width: 100%;
+    overflow-x: hidden; /* Tambahan pengaman per halaman */
+    position: relative;
+}
+
 /* --- VARIABLES & FONTS --- */
 :root {
     --cream: #FAF7F0;     /* Cream Utama */

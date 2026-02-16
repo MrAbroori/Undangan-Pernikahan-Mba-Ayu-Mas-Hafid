@@ -167,37 +167,55 @@ function copyText(elementId) {
 // =============================================================================
 
 // A. LOAD UCAPAN DARI GOOGLE SHEET
+// VERSI DEBUGGING
 function loadUcapan() {
     const daftarUcapan = document.getElementById("daftar-ucapan");
-    if (!daftarUcapan) return;
+    
+    // Cek apakah URL sudah diisi
+    if (!scriptURL || scriptURL.includes('AKfycbzVWcnpNx')) {
+        daftarUcapan.innerHTML = '<p class="text-center text-danger small">Error: URL Google Script belum diganti!</p>';
+        return;
+    }
 
     fetch(scriptURL)
-    .then(response => response.json())
+    .then(response => {
+        // Cek status koneksi
+        if (!response.ok) {
+            throw new Error('Jaringan bermasalah: ' + response.status);
+        }
+        return response.json();
+    })
     .then(data => {
-        if (data.length === 0) {
+        // Cek apakah data kosong atau error dari script
+        if (!data || data.length === 0) {
             daftarUcapan.innerHTML = '<div class="text-center py-5 opacity-75">Belum ada ucapan. Jadilah yang pertama!</div>';
             return;
         }
 
+        if (data.result === 'error') {
+             throw new Error(data.error);
+        }
+
         let html = '';
+        // Loop data
         data.forEach(item => {
-            const inisial = item.nama.charAt(0).toUpperCase();
-            
-            // Badge warna warni sederhana
+            // Validasi data biar tidak error kalau ada kolom kosong
+            const nama = item.nama ? item.nama : 'Tanpa Nama';
+            const status = item.status ? item.status : 'Hadir';
+            const pesan = item.pesan ? item.pesan : '';
+
+            // Tentukan warna badge
             let badgeClass = 'bg-secondary';
-            if(item.status === 'Hadir') badgeClass = 'bg-success'; // Hijau bootstrap
-            if(item.status === 'Tidak Hadir') badgeClass = 'bg-danger'; // Merah bootstrap
-            
-            // Style khusus agar badge terlihat bagus di tema Cream/Green
-            const badgeStyle = "font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; color: white;";
+            if(status === 'Hadir') badgeClass = 'bg-success';
+            if(status === 'Tidak Hadir') badgeClass = 'bg-danger';
 
             html += `
             <div class="ucapan-item animate__animated animate__fadeIn">
                 <div class="d-flex align-items-center mb-2">
-                    <div class="fw-bold text-cream me-2">${item.nama}</div>
-                    <span class="${badgeClass}" style="${badgeStyle}">${item.status}</span>
+                    <div class="fw-bold text-cream me-2">${nama}</div>
+                    <span class="badge ${badgeClass}" style="font-size: 0.6rem;">${status}</span>
                 </div>
-                <p class="small text-cream opacity-75 mb-0 fst-italic">"${item.pesan}"</p>
+                <p class="small text-cream opacity-75 mb-0 fst-italic">"${pesan}"</p>
             </div>
             `;
         });
@@ -205,8 +223,11 @@ function loadUcapan() {
         daftarUcapan.innerHTML = html;
     })
     .catch(error => {
-        console.error('Error load ucapan:', error);
-        daftarUcapan.innerHTML = '<div class="text-center py-5 opacity-75 text-danger">Gagal memuat ucapan.</div>';
+        console.error('DETAIL ERROR:', error); // Cek Console browser (F12) untuk lihat ini
+        daftarUcapan.innerHTML = `<div class="text-center py-5 text-warning small">
+            Gagal memuat data.<br>
+            <span style="font-size: 0.7em">Pastikan "Who has access" = "Anyone" saat Deploy.</span>
+        </div>`;
     });
 }
 
