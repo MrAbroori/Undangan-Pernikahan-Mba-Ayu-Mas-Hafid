@@ -1,8 +1,8 @@
 /* --- VARIABLES & FONTS --- */
 :root {
-    --cream: #FAF7F0;     /* Cream lebih lembut */
+    --cream: #FAF7F0;     /* Cream lembut premium */
     --green: #4A563A;     /* Hijau Sage Deep */
-    --gold: #C5A059;      /* Warna emas untuk aksen */
+    --gold: #C5A059;      /* Emas */
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
     --font-script: 'Great Vibes', cursive;
@@ -16,7 +16,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- TYPOGRAPHY --- */
+/* --- TYPOGRAPHY & UTILS --- */
 .font-aesthetic { font-family: var(--font-heading); font-weight: 600; letter-spacing: -0.5px; }
 .text-green { color: var(--green); }
 .text-cream { color: var(--cream); }
@@ -24,16 +24,17 @@ body {
 .bg-green { background-color: var(--green); }
 .letter-spacing-small { letter-spacing: 3px; font-size: 0.75rem; }
 
-/* --- ORNAMENTS (BUNGA) --- */
-.ornamen-pojok-kiri-atas { position: absolute; top: 0; left: 0; width: 150px; opacity: 0.8; }
-.ornamen-pojok-kanan-atas { position: absolute; top: 0; right: 0; width: 150px; transform: scaleX(-1); opacity: 0.8; }
-.ornamen-sisi-kiri { position: absolute; top: 50%; left: -50px; width: 120px; transform: translateY(-50%); opacity: 0.6; }
-.ornamen-sisi-kanan { position: absolute; top: 50%; right: -50px; width: 120px; transform: translateY(-50%); opacity: 0.6; }
-.ornamen-pojok-kiri-bawah { position: absolute; bottom: 0; left: 0; width: 120px; }
-.ornamen-pojok-kanan-bawah { position: absolute; bottom: 0; right: 0; width: 120px; transform: scaleX(-1); }
+/* --- ORNAMENTS (POSISI BUNGA) --- */
+.ornamen-pojok-kiri-atas { position: absolute; top: 0; left: 0; width: 160px; opacity: 0.8; z-index: 0; }
+.ornamen-pojok-kanan-atas { position: absolute; top: 0; right: 0; width: 160px; transform: scaleX(-1); opacity: 0.8; z-index: 0; }
+.ornamen-sisi-kiri { position: absolute; top: 50%; left: -60px; width: 140px; transform: translateY(-50%); opacity: 0.5; z-index: 0; }
+.ornamen-sisi-kanan { position: absolute; top: 50%; right: -60px; width: 140px; transform: translateY(-50%); opacity: 0.5; z-index: 0; }
+.ornamen-pojok-kiri-bawah { position: absolute; bottom: 0; left: 0; width: 130px; z-index: 0; }
+.ornamen-pojok-kanan-bawah { position: absolute; bottom: 0; right: 0; width: 130px; transform: scaleX(-1); z-index: 0; }
 
 @media (max-width: 576px) {
-    .ornamen-pojok-kiri-atas, .ornamen-pojok-kanan-atas { width: 100px; }
+    .ornamen-pojok-kiri-atas, .ornamen-pojok-kanan-atas { width: 110px; }
+    .ornamen-sisi-kiri, .ornamen-sisi-kanan { width: 90px; }
 }
 
 /* --- HERO SECTION --- */
@@ -43,128 +44,139 @@ body {
     display: flex; flex-direction: column; justify-content: space-between;
     position: relative; overflow: hidden;
 }
-.hero-content { flex-grow: 1; z-index: 2; }
+.hero-content { flex-grow: 1; z-index: 2; position: relative; }
 
-/* Inisial Overlap */
-.inisial-box { position: relative; height: 140px; }
+/* Inisial Overlap (Lebih Menyatu) */
+.inisial-box { position: relative; height: 160px; }
 .inisial-huruf {
     font-family: var(--font-heading);
     font-size: 8rem; line-height: 0.8;
     color: var(--green); z-index: 1;
 }
 .bunga-tengah {
-    width: 130px; margin: 0 -45px; z-index: 2;
-    filter: drop-shadow(0 0 10px var(--cream));
+    width: 140px; margin: 0 -50px; z-index: 2;
+    filter: drop-shadow(0 0 15px var(--cream)); transform: rotate(10deg);
 }
 
 .nama-lengkap-hero {
-    font-family: var(--font-heading); font-size: 2rem;
+    font-family: var(--font-heading); font-size: 2.2rem;
     font-style: italic; color: var(--green);
 }
 .tanggal-hero {
     border-top: 1px solid var(--green); border-bottom: 1px solid var(--green);
-    padding: 5px 20px; font-size: 0.9rem; letter-spacing: 1px;
+    padding: 5px 20px; font-size: 0.9rem; letter-spacing: 2px;
 }
 
-/* Hero Bottom Glass Effect */
+/* Hero Bottom Glass */
 .hero-bottom { width: 100%; z-index: 2; }
 .content-box.glass-effect {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    border-radius: 20px 20px 0 0;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 25px 25px 0 0;
     width: 100%; max-width: 500px;
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 -10px 40px rgba(74, 86, 58, 0.1);
 }
 
 /* --- BUTTONS --- */
 .btn-custom-cream {
     background-color: var(--green); color: var(--cream);
-    border: none; padding: 12px 30px; border-radius: 50px;
-    font-family: var(--font-body); font-weight: 500; letter-spacing: 1px;
+    border: none; padding: 12px 35px; border-radius: 50px;
+    font-family: var(--font-body); font-weight: 600; letter-spacing: 1px;
     transition: all 0.3s;
 }
-.btn-custom-cream:hover { background-color: var(--dark-green); transform: translateY(-2px); color: white; }
+.btn-custom-cream:hover { background-color: #2e3624; transform: translateY(-3px); color: white; }
 
 .btn-outline-green {
     color: var(--green); border: 1px solid var(--green);
-    padding: 8px 20px; border-radius: 50px;
+    padding: 10px 25px; border-radius: 50px; background: transparent;
 }
 .btn-outline-green:hover { background-color: var(--green); color: white; }
 
 /* --- PAGE ELEMENTS --- */
-.display-2 { font-size: 3.5rem; }
-.ampersand { font-family: var(--font-script); color: var(--gold); font-size: 0.7em; }
+.display-2 { font-size: 4rem; }
+.ampersand { font-family: var(--font-script); color: var(--gold); font-size: 0.6em; }
+.quote-text { max-width: 600px; color: #666; }
 .date-badge {
     background: var(--green); color: var(--cream);
-    padding: 8px 25px; border-radius: 50px; font-size: 0.9rem;
+    padding: 8px 30px; border-radius: 50px; font-size: 0.9rem; letter-spacing: 1px;
 }
 
-/* Countdown Minimalis */
+/* Ampersand Raksasa */
+.ampersand-huge {
+    font-family: var(--font-script);
+    font-size: 7rem; /* Sesuai request: Lebih besar */
+    color: var(--green); opacity: 0.2; line-height: 1;
+}
+
+/* Countdown */
 .time-box {
     display: flex; flex-direction: column; align-items: center;
-    min-width: 60px;
+    min-width: 65px;
 }
-.time-number { font-family: var(--font-heading); font-size: 2.5rem; line-height: 1; font-weight: 600; }
-.time-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+.time-number { font-family: var(--font-heading); font-size: 2.8rem; line-height: 1; font-weight: 600; }
+.time-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; }
 
-/* Quote Divider */
-.divider-cream { width: 60px; height: 3px; background-color: var(--cream); }
+/* Quote Section */
+.quote-box { max-width: 700px; margin: 0 auto; }
+.divider-cream { width: 80px; height: 2px; background-color: var(--cream); }
 
 /* --- MEMPELAI (ARCH) --- */
 .mempelai-card { position: relative; z-index: 2; }
 .arch-frame {
-    width: 200px; height: 260px;
-    border-radius: 100px 100px 20px 20px; /* Bentuk Kubah */
-    overflow: hidden; border: 4px solid var(--green); padding: 5px;
+    width: 220px; height: 280px;
+    border-radius: 110px 110px 20px 20px;
+    overflow: hidden; border: 3px solid var(--green); padding: 6px;
 }
 .mempelai-img {
     width: 100%; height: 100%; object-fit: cover;
-    border-radius: 95px 95px 15px 15px; filter: sepia(15%);
+    border-radius: 100px 100px 15px 15px; filter: sepia(10%);
 }
 .label-role {
-    font-family: var(--font-script); font-size: 1.8rem;
-    color: var(--gold); margin-top: -10px;
+    font-family: var(--font-script); font-size: 2rem;
+    color: var(--gold); margin-top: -15px; position: relative; z-index: 3;
 }
-.ampersand-big { font-family: var(--font-script); font-size: 4rem; color: var(--green); opacity: 0.3; }
 
 /* --- ACARA CARDS --- */
 .card-acara {
-    background: #fff; border-radius: 15px; padding: 30px;
-    position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.05);
-    transition: transform 0.3s;
+    background: #fff; border-radius: 20px; padding: 40px 30px;
+    position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.03);
+    transition: transform 0.4s;
 }
-.card-acara:hover { transform: translateY(-5px); }
-.card-header-ornament { margin-bottom: 15px; opacity: 0.8; }
-.detail-acara p { margin-bottom: 5px; font-weight: 500; }
+.card-acara:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+.detail-acara p { margin-bottom: 8px; font-weight: 500; }
 
-/* --- GIFT & MODAL --- */
-.btn-block-custom { width: 100%; max-width: 280px; }
-.modal-content { border-radius: 20px; overflow: hidden; }
+/* --- GIFT (Collapse Style) --- */
+.btn-block-custom { width: 100%; max-width: 300px; }
 .credit-card {
-    height: 180px; border-radius: 15px; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #4A563A 0%, #2e3624 100%);
-    display: flex; flex-direction: column; padding: 20px;
+    height: 190px; border-radius: 18px; position: relative; overflow: hidden;
+    background: linear-gradient(145deg, #4A563A 0%, #293021 100%);
+    display: flex; flex-direction: column; padding: 25px; margin-bottom: 10px;
 }
 .card-bg-texture {
-    position: absolute; top:0; left:0; width:100%; height:100%;
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1h2v2H1V1zm4 0h2v2H5V1zm4 0h2v2H9V1z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    position: absolute; top:0; left:0; width:100%; height:100%; opacity: 0.1;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #fff 10px, #fff 11px);
 }
+.letter-spacing-2 { letter-spacing: 3px; }
 
-/* --- RSVP GLASS FORM --- */
+/* --- RSVP GLASS --- */
 .glass-form {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);
 }
 .custom-input {
-    background: rgba(255, 255, 255, 0.8); border: none; padding: 12px;
+    background: rgba(255, 255, 255, 0.9); border: none; padding: 14px; border-radius: 10px;
 }
-.ucapan-container-glass {
-    height: 350px; overflow-y: auto;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 15px; padding: 15px; color: var(--cream);
-}
-.ucapan-item { background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px; margin-bottom: 10px; }
+.custom-input:focus { box-shadow: none; background: #fff; }
 
-/* ANIMATION */
-.modal.fade .modal-dialog { transform: translateY(-100vh); transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
-.modal.show .modal-dialog { transform: translateY(0); }
+.ucapan-container-glass {
+    height: 400px; overflow-y: auto;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 15px; padding: 20px; color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.ucapan-item { background: rgba(255,255,255,0.08); padding: 12px; border-radius: 12px; margin-bottom: 12px; }
+
+/* Scrollbar Cantik */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 10px; }

@@ -7,7 +7,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -71,11 +71,11 @@
                 "Kami Berharap anda menjadi bagian dari hari istimewa kami"
             </p>
 
-            <div class="date-badge mb-5">
+            <div class="date-badge mb-4">
                 <span class="fw-bold">Sabtu, 04 April 2026</span>
             </div>
 
-            <div id="countdown" class="d-flex justify-content-center gap-3 flex-wrap">
+            <div id="countdown" class="d-flex justify-content-center gap-3 flex-wrap mb-5">
                 <div class="time-box">
                     <span id="days" class="time-number">00</span><span class="time-label">Hari</span>
                 </div>
@@ -89,6 +89,11 @@
                     <span id="seconds" class="time-number">00</span><span class="time-label">Detik</span>
                 </div>
             </div>
+
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Wedding+of+Ayu+%26+Hafid&details=Tanpa+mengurangi+rasa+hormat,+kami+mengundang+Bapak/Ibu/Saudara/i+untuk+hadir+di+pernikahan+kami.&dates=20260404T080000/20260404T140000&location=Kopi+Setia+Jatinangor,+Sumedang&ctz=Asia/Jakarta" 
+               target="_blank" class="btn btn-outline-green rounded-pill px-4 shadow-sm">
+                <i class="far fa-calendar-plus me-2"></i> Simpan di Kalender
+            </a>
         </section>
 
 
@@ -113,7 +118,7 @@
             <img src="assets/bunga-06.svg" class="ornamen-pojok-kiri-bawah" alt="ornamen">
             <img src="assets/bunga-07.svg" class="ornamen-pojok-kanan-bawah" alt="ornamen">
 
-            <div class="container">
+            <div class="container position-relative z-2">
                 <div class="row justify-content-center align-items-center">
                     
                     <div class="col-md-5 mb-5 mb-md-0">
@@ -132,7 +137,7 @@
                     </div>
 
                     <div class="col-md-2 my-4">
-                        <div class="ampersand-big">&</div>
+                        <div class="ampersand-huge">&</div>
                     </div>
 
                     <div class="col-md-5">
@@ -169,10 +174,12 @@
                                 <p><i class="far fa-calendar me-2"></i> Sabtu, 04 April 2026</p>
                                 <p><i class="far fa-clock me-2"></i> 08.00 - 09.00 WIB</p>
                             </div>
+                            
                             <p class="small text-muted mt-3 px-3">
+                                <strong>Kopi Setia Jatinangor</strong><br>
                                 Jl. Raya Jatinangor No.44, RT.03/RW.11, Sayang, Kec. Jatinangor, Sumedang
                             </p>
-                            <a href="#" class="btn btn-outline-green btn-sm mt-2">Lihat Lokasi</a>
+                            <a href="https://maps.google.com/?q=Kopi+Setia+Jatinangor" target="_blank" class="btn btn-outline-green btn-sm mt-2">Lihat Lokasi</a>
                         </div>
                     </div>
 
@@ -186,10 +193,12 @@
                                 <p><i class="far fa-calendar me-2"></i> Sabtu, 04 April 2026</p>
                                 <p><i class="far fa-clock me-2"></i> 10.00 - 14.00 WIB</p>
                             </div>
+                            
                             <p class="small text-muted mt-3 px-3">
+                                <strong>Kopi Setia Jatinangor</strong><br>
                                 Jl. Raya Jatinangor No.44, RT.03/RW.11, Sayang, Kec. Jatinangor, Sumedang
                             </p>
-                            <a href="#" class="btn btn-outline-green btn-sm mt-2">Lihat Lokasi</a>
+                            <a href="https://maps.google.com/?q=Kopi+Setia+Jatinangor" target="_blank" class="btn btn-outline-green btn-sm mt-2">Lihat Lokasi</a>
                         </div>
                     </div>
                 </div>
@@ -197,23 +206,73 @@
         </section>
 
 
-        <section id="wedding-gift" class="bg-cream text-green py-5 text-center">
+        <section id="wedding-gift" class="bg-cream text-green py-5 text-center position-relative">
+            <img src="assets/bunga-02.svg" width="80" class="mb-3 opacity-25" alt="flower">
+            
             <div class="container">
-                <img src="assets/bunga-02.svg" width="60" class="mb-3 opacity-50" alt="flower">
                 <h2 class="font-aesthetic mb-3">Wedding Gift</h2>
                 <p class="mb-4 px-3 text-muted" style="max-width: 600px; margin: 0 auto;">
                     Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.
                 </p>
 
                 <div class="d-flex flex-column align-items-center justify-content-center mt-4 gap-3">
-                    <button type="button" class="btn btn-custom-green shadow btn-block-custom" data-bs-toggle="modal" data-bs-target="#giftModal">
+                    <button type="button" class="btn btn-custom-green shadow btn-block-custom" data-bs-toggle="collapse" data-bs-target="#giftCollapse" aria-expanded="false" aria-controls="giftCollapse">
                         <i class="fas fa-gift me-2"></i> Lihat Info Pengiriman
                     </button>
-                    <a href="https://wa.me/6282121275164" target="_blank" class="btn btn-outline-green shadow btn-block-custom">
+
+                    <a href="https://wa.me/6282121275164?text=Halo%20Kak,%20saya%20sudah%20mengirimkan%20hadiah." target="_blank" class="btn btn-outline-green shadow btn-block-custom">
                         <i class="fab fa-whatsapp me-2"></i> WhatsApp Konfirmasi
                     </a>
                 </div>
-            </div>
+
+                <div class="collapse mt-4" id="giftCollapse">
+                    <div class="row justify-content-center g-3">
+                        
+                        <div class="col-md-5 col-lg-4">
+                            <div class="credit-card shadow mx-auto">
+                                <div class="card-bg-texture"></div>
+                                <div class="card-content text-white text-start">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <i class="fas fa-home fa-lg opacity-50"></i>
+                                        <span class="small border border-white px-2 rounded-pill">Alamat</span>
+                                    </div>
+                                    <div class="mt-auto">
+                                        <h5 class="font-aesthetic mb-1">Ayu Arista Sabillaa</h5>
+                                        <p class="small opacity-75 mb-2">+6282-2127-5164</p>
+                                        <p class="small mb-0 text-truncate-multiline" id="textAlamat">Jl. Caringin, No. 47, RT 01/RW 13, Ds. Sayang, Kec. Jatinangor, Sumedang</p>
+                                    </div>
+                                    <button class="btn btn-light btn-sm mt-3 w-100 fw-bold text-green" onclick="copyText('textAlamat')">
+                                        <i class="far fa-copy"></i> Salin Alamat
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-lg-4">
+                            <div class="credit-card shadow mx-auto">
+                                <div class="card-bg-texture"></div>
+                                <div class="card-content text-white text-start">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <span class="small opacity-50">E-Wallet</span>
+                                        <div class="bg-white p-1 rounded" style="height: 25px; display: inline-block;">
+                                            <img src="assets/spay.svg" height="18" alt="spay">
+                                        </div>
+                                    </div>
+                                    <div class="mt-auto">
+                                        <h5 class="font-aesthetic mb-1">Ayu Arista Sabillaa</h5>
+                                        <p class="small opacity-75 mb-0">ShopeePay</p>
+                                        <h3 class="fw-bold letter-spacing-2 mb-0" id="textSpay">0821-2127-5164</h3>
+                                    </div>
+                                    <button class="btn btn-light btn-sm mt-3 w-100 fw-bold text-green" onclick="copyText('textSpay')">
+                                        <i class="far fa-copy"></i> Salin Nomor
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                </div>
         </section>
 
 
@@ -260,50 +319,6 @@
             </div>
         </section>
 
-    </div>
-
-    <div class="modal fade" id="giftModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-cream">
-                <div class="modal-header border-0 pb-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body pt-0 px-4 pb-4">
-                    <h5 class="font-aesthetic text-green text-center mb-4 fs-3">Wedding Gift</h5>
-                    
-                    <div class="credit-card mb-3 shadow">
-                        <div class="card-bg-texture"></div>
-                        <div class="card-content text-white">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <i class="fas fa-home fa-lg opacity-50"></i>
-                                <span class="small border border-white px-2 rounded-pill">Alamat</span>
-                            </div>
-                            <div class="mt-auto">
-                                <h5 class="font-aesthetic mb-1">Ayu Arista Sabillaa</h5>
-                                <p class="small opacity-75 mb-2">+6282-2127-5164</p>
-                                <p class="small mb-0 text-truncate-multiline" id="textAlamat">Jl. Caringin, No. 47, RT 01/RW 13, Ds. Sayang, Kec. Jatinangor, Sumedang</p>
-                            </div>
-                            <button class="btn btn-light btn-sm mt-3 w-100 fw-bold text-green" onclick="copyText('textAlamat')"><i class="far fa-copy"></i> Salin Alamat</button>
-                        </div>
-                    </div>
-
-                    <div class="credit-card shadow">
-                        <div class="card-bg-texture"></div>
-                        <div class="card-content text-white">
-                            <div class="d-flex justify-content-between align-items-start">
-                                <span class="small opacity-50">E-Wallet</span>
-                                <img src="assets/spay.svg" height="20" class="bg-white p-1 rounded">
-                            </div>
-                            <div class="mt-auto">
-                                <h5 class="font-aesthetic mb-1">Ayu Arista Sabillaa</h5>
-                                <h3 class="fw-bold letter-spacing-2 mb-0" id="textSpay">0821-2127-5164</h3>
-                            </div>
-                            <button class="btn btn-light btn-sm mt-3 w-100 fw-bold text-green" onclick="copyText('textSpay')"><i class="far fa-copy"></i> Salin Nomor</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
