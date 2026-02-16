@@ -73,46 +73,90 @@ if (namaTamu) {
 }
 
 // --- 4. KIRIM DATA RSVP KE GOOGLE SHEETS ---
-const form = document.forms['rsvpForm'];
+// --- 5. KIRIM RSVP & LOAD UCAPAN ---
+const form = document.getElementById('rsvpForm');
 const btnKirim = document.querySelector("button[type='submit']");
+const daftarUcapan = document.getElementById("daftar-ucapan");
 
-form.addEventListener('submit', e => {
-    e.preventDefault(); // Cegah halaman reload
-    
-    // Ubah tombol jadi "Loading..."
-    btnKirim.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-    btnKirim.disabled = true;
+// A. Fungsi Load Ucapan dari Google Sheet
+function loadUcapan() {
+    fetch(scriptURL) // Default fetch adalah GET
+    .then(response => response.json())
+    .then(data => {
+        if (data.length === 0) {
+            daftarUcapan.innerHTML = '<p class="text-center small text-muted">Belum ada ucapan. Jadilah yang pertama!</p>';
+            return;
+        }
 
-    // Ambil data form
-    const data = {
-        nama: form.nama.value,
-        jumlah: form.jumlah.value,
-        status: form.status.value,
-        pesan: form.pesan.value
-    };
+        let html = '';
+        data.forEach(item => {
+            // Ambil huruf pertama nama untuk ikon
+            const inisial = item.nama.charAt(0).toUpperCase();
+            
+            // Tentukan badge status
+            let badgeClass = 'bg-secondary';
+            if(item.status === 'Hadir') badgeClass = 'bg-success';
+            if(item.status === 'Tidak Hadir') badgeClass = 'bg-danger';
 
-    // Kirim pakai Fetch API
-    fetch(scriptURL, {
-        method: 'POST',
-        // Kita kirim sebagai text biasa tapi isinya JSON String
-        // Ini trik agar tidak kena blokir CORS (Cross-Origin Resource Sharing)
-        body: JSON.stringify(data),
-    })
-    .then(response => {
-        // Jika sukses
-        alert("Terima kasih! Konfirmasi Anda telah terkirim.");
-        form.reset(); // Kosongkan form
-        btnKirim.innerHTML = 'Kirim Konfirmasi';
-        btnKirim.disabled = false;
+            html += `
+            <div class="ucapan-item animate__animated animate__fadeIn">
+                <div class="ucapan-icon">${inisial}</div>
+                <div class="ucapan-content">
+                    <h5>${item.nama} <span class="badge ${badgeClass}">${item.status}</span></h5>
+                    <p>"${item.pesan}"</p>
+                </div>
+            </div>
+            `;
+        });
+        
+        daftarUcapan.innerHTML = html;
     })
     .catch(error => {
-        // Jika gagal
-        console.error('Error!', error.message);
-        alert("Maaf, terjadi kesalahan. Silakan coba lagi.");
-        btnKirim.innerHTML = 'Kirim Konfirmasi';
-        btnKirim.disabled = false;
+        console.error('Error load ucapan:', error);
+        daftarUcapan.innerHTML = '<p class="text-center small text-danger">Gagal memuat ucapan.</p>';
     });
-});
+}
+
+// Panggil fungsi load saat halaman dibuka
+document.addEventListener("DOMContentLoaded", loadUcapan);
+
+
+// B. Handle Submit Form
+if (form) {
+    form.addEventListener('submit', e => {
+        e.preventDefault(); 
+        
+        btnKirim.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+        btnKirim.disabled = true;
+
+        const data = {
+            nama: form.nama.value,
+            jumlah: form.jumlah.value,
+            status: form.status.value,
+            pesan: form.pesan.value
+        };
+
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            alert("Terima kasih! Konfirmasi & Ucapan Anda telah terkirim.");
+            form.reset(); 
+            btnKirim.innerHTML = 'Kirim Konfirmasi';
+            btnKirim.disabled = false;
+            
+            // Reload ucapan biar yang baru langsung muncul
+            loadUcapan(); 
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert("Maaf, terjadi kesalahan. Silakan coba lagi.");
+            btnKirim.innerHTML = 'Kirim Konfirmasi';
+            btnKirim.disabled = false;
+        });
+    });
+}
 
 // --- 5. COUNTDOWN TIMER ---
 // Tanggal target: Tahun, Bulan (0-11), Tanggal, Jam, Menit

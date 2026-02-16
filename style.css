@@ -277,3 +277,61 @@ body {
     max-width: 300px; /* Tapi jangan kelebaran */
     margin: 5px 0; /* Jarak antar tombol */
 }
+
+/* --- RSVP & UCAPAN --- */
+.ucapan-container {
+    height: 400px; /* Tinggi kotak */
+    overflow-y: auto; /* Agar bisa di-scroll */
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Style Scrollbar biar tipis */
+.ucapan-container::-webkit-scrollbar { width: 5px; }
+.ucapan-container::-webkit-scrollbar-thumb { background-color: var(--green); border-radius: 10px; }
+
+/* Item Ucapan Individual */
+.ucapan-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.ucapan-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--cream);
+    color: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.ucapan-content h5 {
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: var(--dark-green);
+}
+
+.ucapan-content .badge {
+    font-size: 0.7rem;
+    font-weight: normal;
+    background-color: var(--green);
+    margin-left: 5px;
+}
+
+.ucapan-content p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0;
+    line-height: 1.4;
+    font-style: italic;
+}
