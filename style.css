@@ -55,13 +55,22 @@ body {
 /* HERO SECTION */
 
 .hero-container {
+    /* UBAH INI: Agar cover mengambang di atas dan tidak mendorong konten ke bawah */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
+    
+    /* Z-Index tinggi agar menutupi semuanya di awal */
+    z-index: 9999; 
+    
     background: radial-gradient(circle at center, #FAF7F0 0%, #EBE5D5 100%);
     display: flex; 
     flex-direction: column; 
     justify-content: space-between;
-    position: relative; 
     overflow: hidden;
+    transition: transform 1s ease-in-out; /* Animasi geser halus */
 }
 
 .hero-content { 

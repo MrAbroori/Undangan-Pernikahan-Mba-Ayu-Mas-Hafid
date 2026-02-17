@@ -146,33 +146,38 @@ function loadUcapan() {
 // ============================================================================
 // 4. FUNGSI GLOBAL (BUKA UNDANGAN & COPY)
 // ============================================================================
+// ============================================================================
+// 4. FUNGSI GLOBAL (BUKA UNDANGAN & COPY)
+// ============================================================================
 function bukaUndangan() {
     const hero = document.getElementById("hero");
+    const mainContent = document.getElementById("main-content");
     const audio = document.getElementById("song");
+    const audioContainer = document.getElementById("audio-container");
     
-    // Animasi Cover Naik
+    // 1. Geser Cover (Hero) ke Atas
     if(hero) {
-        hero.style.transform = "translateY(-100vh)";
-        hero.style.transition = "transform 1s ease-in-out";
+        hero.style.transform = "translateY(-100vh)"; 
     }
     
-    // Tampilkan Konten Utama
-    document.getElementById("main-content").style.display = "block";
-    document.getElementById("audio-container").style.display = "block";
+    // 2. Tampilkan Konten Utama (Langsung, tanpa jeda)
+    if(mainContent) {
+        mainContent.style.display = "block";
+    }
+
+    // 3. Aktifkan Scroll pada Body (PENTING)
+    document.body.style.overflow = "auto"; 
     
-    // Putar Lagu
+    // 4. Munculkan Tombol Musik & Putar Lagu
+    if(audioContainer) audioContainer.style.display = "block";
     if(audio) audio.play().catch(e => console.log("Audio autoplay blocked"));
     
-    // Init Animasi AOS (Supaya jalan pas dibuka)
+    // 5. Init Animasi AOS
     if (typeof AOS !== 'undefined') {
         AOS.init({ duration: 1000, once: true });
     }
-    
-    // Scroll ke Page 1
-    setTimeout(() => {
-        document.getElementById("page-1").scrollIntoView({ behavior: 'smooth' });
-    }, 500);
 }
+document.body.style.overflow = "hidden";
 
 function copyText(id) {
     const el = document.getElementById(id);
