@@ -120,40 +120,63 @@ body {
     filter: drop-shadow(0 5px 15px rgba(74, 93, 67, 0.2));
 }
 
-/* --- BAGIAN BAWAH (TEKS & TAMU) --- */
+/* --- WRAPPER HIJAU BAWAH --- */
 .hero-bottom-wrapper {
-    text-align: center;
+    /* Membuat Blok Hijau */
+    background-color: var(--green-dark); 
     width: 100%;
-    max-width: 400px; /* Batasi lebar agar rapi di HP */
-    z-index: 10;
+    
+    /* Posisikan Menempel di Bawah Layar */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+    /* Styling Bentuk */
+    padding: 40px 20px 30px; /* Ruang napas yang cukup */
+    border-top-left-radius: 40px; /* Lengkungan Kiri Atas */
+    border-top-right-radius: 40px; /* Lengkungan Kanan Atas */
+    
+    /* Flexbox untuk menengahkan isi */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Pastikan semua center */
+    align-items: center;
+    z-index: 10;
+    
+    /* Bayangan agar terlihat menumpuk di atas cream */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1); 
 }
 
+/* Judul Kecil */
 .the-wedding-text {
+    /* Hapus background hijau yang tadi, ganti jadi transparan/polos */
+    background-color: transparent; 
+    padding: 0;
+    box-shadow: none;
+    
+    /* Warna Emas agar mewah di atas Hijau */
+    color: var(--gold-accent); 
+    
     font-family: var(--font-body), sans-serif;
     font-size: 0.75rem;
     letter-spacing: 4px;
-    color: var(--gold-accent);
     font-weight: 600;
-    margin: 0 0 10px 0; /* Margin Reset */
+    margin-bottom: 10px;
     text-transform: uppercase;
 }
 
+/* Nama Mempelai */
 .nama-mempelai-hero {
+    /* Ganti warna jadi CREAM agar terbaca di background Hijau */
+    color: var(--cream-bg); 
+    
     font-family: var(--font-heading), serif;
-    font-size: 2.2rem; /* Sedikit dikecilkan agar aman */
-    color: var(--green-dark);
-    margin: 0 0 25px 0; /* Jarak ke kotak tamu */
+    font-size: 2.5rem;
+    margin: 0 0 30px 0;
     line-height: 1.2;
 }
 
 .dan-simbol {
-    font-family: var(--font-script), cursive;
-    color: var(--gold-accent);
-    font-size: 2rem;
-    font-weight: normal;
+    color: var(--gold-accent); /* Simbol & tetap emas */
 }
 
 /* Kotak Tamu */
@@ -194,25 +217,40 @@ body {
     margin: 5px 0 0 0;
 }
 
-/* Tombol */
 .btn-buka-final {
-    background-color: var(--green-dark);
-    color: var(--cream-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    /* GANTI WARNA DI SINI */
+    background-color: var(--cream-bg); /* Tombol jadi Terang */
+    color: var(--green-dark); /* Teks jadi Gelap */
+    
     border: none;
-    padding: 12px 40px;
+    padding: 12px 35px;
     border-radius: 50px;
     font-family: var(--font-body), sans-serif;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-weight: 700; /* Lebih tebal biar kebaca */
+    letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 0.8rem;
     cursor: pointer;
-    transition: transform 0.3s ease, background 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .btn-buka-final:hover {
     transform: translateY(-3px);
-    background-color: #354430;
+    background-color: #fff; /* Hover jadi putih bersih */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Update warna ikon svg di tombol agar ikut hijau */
+.icon-buka {
+    width: 18px;
+    height: 18px;
+    stroke: var(--green-dark); /* Ikon jadi hijau */
 }
 
 /* --- ANIMASI (YANG HILANG SEBELUMNYA) --- */
@@ -634,4 +672,53 @@ body {
     .bunga-tengah { width: 90px; }
     .huruf-kiri { transform: translateY(-17px); }
     .huruf-kanan { transform: translateY(17px); }
+}
+
+/* =========================================
+   FIX KHUSUS TAMPILAN HP (MOBILE ONLY)
+   Agar Huruf A & H Mepet ke Bunga
+   ========================================= */
+
+@media only screen and (max-width: 600px) {
+
+    /* 1. Perkecil Kotak Pembungkus Secara Ekstrem */
+    /* Semakin kecil width/height, huruf semakin "maksa" ketemuan di tengah */
+    .inisial-box-final {
+        width: 140px !important;  /* Lebar dipersempit drastis */
+        height: 160px !important; /* Tinggi diperpendek */
+    }
+
+    /* 2. Sesuaikan Ukuran Font */
+    .inisial-huruf {
+        font-size: 7rem !important; /* Pas untuk kotak kecil */
+    }
+
+    /* 3. KUNCI UTAMA: Override Posisi Geser (Transform) */
+    /* Kita geser huruf A masuk ke dalam (ke arah bunga) */
+    .huruf-a {
+        /* Geser Kanan 15px, Turun 5px (Mendekati tengah) */
+        transform: translate(15px, 5px) !important; 
+    }
+
+    /* Kita geser huruf H masuk ke dalam (ke arah bunga) */
+    .huruf-h {
+        /* Geser Kiri 15px, Naik 15px (Mendekati tengah) */
+        transform: translate(-15px, -15px) !important;
+    }
+
+    /* 4. Ukuran Bunga Disesuaikan */
+    .bunga-tulip {
+        width: 85px !important; /* Sedikit lebih kecil agar proporsional */
+        transform: translateY(5px) !important; /* Posisikan pas di tengah */
+    }
+
+    /* TWEAK TAMBAHAN: Jarak Nama Mempelai */
+    /* Agar nama mempelai tidak terlalu jauh dari inisial di HP */
+    .hero-content {
+        margin-bottom: 0px !important; 
+    }
+    
+    .nama-mempelai-hero {
+        margin-top: 10px !important; /* Naikkan nama mendekati inisial */
+    }
 }
