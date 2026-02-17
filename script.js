@@ -1,119 +1,95 @@
-// =============================================================================
+// ============================================================================
 // 1. KONFIGURASI UTAMA
-// =============================================================================
-// Pastikan ini adalah URL Web App TERBARU (Akhiran /exec)
-// Jika kamu deploy ulang, GANTI URL INI!
-const scriptURL = 'https://script.google.com/macros/s/AKfycby1PBsKvOYagze-tXkzNPLSLC3AxGVtJyXxNAe3e1wT2Q60z8oUqnrX7RpWiL5fnP4Ehw/exec'; 
+// ============================================================================
+// PENTING: Ganti URL ini dengan URL Web App Google Script TERBARU (akhiran /exec)
+// Caranya: Deploy > Manage Deployments > Edit (Pensil) > New Version > Deploy
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTiEtQCn3eMn4kbw6bvYfdjOZRoS3vkOVdaMa9KFtrPT-nahpU41tRGtIHt8G6VTr0LQ/exec'; 
 
-// Tanggal Acara: 04 April 2026, 08:00
-const tanggalTujuan = new Date(2026, 3, 4, 8, 0, 0).getTime();
+// Tanggal Acara: Tahun, Bulan (0-11), Tanggal, Jam
+const TARGET_DATE = new Date(2026, 3, 4, 8, 0, 0).getTime(); // 04 April 2026
 
 
-// =============================================================================
-// 2. FUNGSI UTAMA (Jalan saat website dimuat)
-// =============================================================================
+// ============================================================================
+// 2. LOGIKA UTAMA (DOM READY)
+// ============================================================================
 document.addEventListener("DOMContentLoaded", function() {
-    
-    // A. SETUP NAMA TAMU (DARI URL)
-    const urlParams = new URLSearchParams(window.location.search);
-    const namaTamu = urlParams.get('to'); 
-    
-    if (namaTamu) {
-        const namaContainer = document.getElementById("nama-tamu");
-        if (namaContainer) namaContainer.innerText = namaTamu; 
 
-        const inputNama = document.getElementById("nama");
-        if (inputNama) inputNama.value = namaTamu;
+    // A. ISI NAMA TAMU DARI URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const namaTamu = urlParams.get('to');
+    if (namaTamu) {
+        if(document.getElementById("nama-tamu")) document.getElementById("nama-tamu").innerText = namaTamu;
+        if(document.getElementById("nama")) document.getElementById("nama").value = namaTamu;
     }
 
-    // B. LOAD UCAPAN AWAL
-    loadUcapan();
-
-    // C. SETUP TOMBOL MUSIK
+    // B. SETUP AUDIO
     const audioBtn = document.getElementById("audio-btn");
     const audio = document.getElementById("song");
-    const audioIcon = document.querySelector(".fa-compact-disc");
-
     if (audioBtn && audio) {
-        audioBtn.addEventListener("click", function() {
+        audioBtn.addEventListener("click", () => {
             if (audio.paused) {
                 audio.play();
-                audioIcon.classList.add("fa-spin");
+                audioBtn.querySelector("i").classList.add("fa-spin");
             } else {
                 audio.pause();
-                audioIcon.classList.remove("fa-spin");
+                audioBtn.querySelector("i").classList.remove("fa-spin");
             }
         });
     }
 
-    // D. SETUP FORM SUBMIT (RSVP) - BAGIAN KRUSIAL
+    // C. LOAD KOMENTAR/UCAPAN
+    loadUcapan();
+
+    // D. HANDLE SUBMIT FORM RSVP
     const form = document.getElementById('rsvpForm');
     const btnKirim = document.querySelector("button[type='submit']");
 
     if (form) {
-        form.addEventListener('submit', e => {
-            e.preventDefault(); 
-            
-            // 1. Simpan teks asli tombol
-            const textAwal = btnKirim.innerHTML;
-            
-            // 2. Ambil data form
-            const data = {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 1. Validasi Sederhana
+            if (form.nama.value.length < 3) {
+                alert("Mohon isi nama lengkap.");
+                return;
+            }
+
+            // 2. Ubah Tombol Loading
+            const textAsli = btnKirim.innerText;
+            btnKirim.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            btnKirim.disabled = true;
+
+            // 3. Siapkan Data
+            const dataKirim = {
                 nama: form.nama.value,
                 jumlah: form.jumlah.value,
                 status: form.status.value,
                 pesan: form.pesan.value
             };
 
-            // 3. VALIDASI (PENTING: Harus ada return!)
-            if(data.nama.trim().length < 3) {
-                alert("Mohon masukkan nama lengkap yang valid.");
-                return; // BERHENTI DISINI jika salah
-            }
-
-            if(data.jumlah < 1) {
-                alert("Jumlah tamu minimal 1 orang.");
-                return; // BERHENTI DISINI jika salah
-            }
-
-            // 4. Ubah tombol jadi loading
-            btnKirim.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
-            btnKirim.disabled = true;
-
-            // 5. KIRIM KE GOOGLE SHEET
-            fetch(scriptURL, {
+            // 4. Kirim ke Google Script
+            fetch(SCRIPT_URL, {
                 method: 'POST',
-                // Stringify data JSON
-                body: JSON.stringify(data),
-                // Header ini penting agar GAS tidak menolak request (CORS)
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8",
-                },
+                body: JSON.stringify(dataKirim),
+                // Header ini PENTING agar Google Script mau menerima JSON tanpa error CORS
+                headers: { "Content-Type": "text/plain" }
             })
-            .then(response => {
-                // Cek jika response sukses (200 OK)
-                if (!response.ok) {
-                    throw new Error('Respon server gagal.');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(result => {
-                // Cek balikan dari Apps Script
                 if (result.result === 'success') {
-                    alert("Terima kasih! Konfirmasi & Ucapan Anda telah terkirim.");
-                    form.reset(); // Kosongkan form
+                    alert("Terima kasih! Konfirmasi kehadiran berhasil terkirim.");
+                    form.reset(); // Bersihkan form
                     loadUcapan(); // Refresh daftar ucapan
                 } else {
-                    throw new Error(result.error || 'Gagal menyimpan data.');
+                    throw new Error(result.error || 'Gagal menyimpan.');
                 }
             })
             .catch(error => {
-                console.error('Error saat kirim:', error);
-                alert("Maaf, terjadi kesalahan koneksi. Pastikan internet lancar atau coba lagi nanti.");
+                console.error('Error:', error);
+                alert("Maaf, terjadi kesalahan koneksi. Silakan coba lagi.");
             })
             .finally(() => {
-                // Kembalikan tombol seperti semula (selalu dijalankan sukses/gagal)
-                btnKirim.innerHTML = textAwal;
+                btnKirim.innerHTML = textAsli;
                 btnKirim.disabled = false;
             });
         });
@@ -121,132 +97,114 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// =============================================================================
-// 3. FUNGSI GLOBAL
-// =============================================================================
-
-function bukaUndangan() {
-    const hero = document.getElementById("hero");
-    const mainContent = document.getElementById("main-content");
-    const audio = document.getElementById("song");
-    const audioContainer = document.getElementById("audio-container");
-    const page1 = document.getElementById("page-1");
-
-    if (hero) {
-        hero.style.transform = "translateY(-100vh)";
-        hero.style.transition = "transform 1s ease-in-out";
-    }
-    
-    if (mainContent) {
-        mainContent.style.display = "block";
-        setTimeout(() => {
-            if(page1) page1.scrollIntoView({ behavior: 'smooth' });
-        }, 500);
-    }
-    
-    if (audio) {
-        audio.play().catch(error => console.log("Autoplay blocked:", error));
-    }
-    if (audioContainer) {
-        audioContainer.style.display = "block";
-    }
-}
-
-function copyText(elementId) {
-    const element = document.getElementById(elementId);
-    if (!element) return;
-    const textToCopy = element.innerText;
-    navigator.clipboard.writeText(textToCopy).then(() => {
-        alert("Berhasil disalin: " + textToCopy);
-    }, () => {
-        alert("Gagal menyalin.");
-    });
-}
-
-
-// =============================================================================
-// 4. FUNGSI LOAD UCAPAN
-// =============================================================================
-
+// ============================================================================
+// 3. FUNGSI LOAD UCAPAN (GET)
+// ============================================================================
 function loadUcapan() {
-    const daftarUcapan = document.getElementById("daftar-ucapan");
-    if (!daftarUcapan) return;
+    const container = document.getElementById("daftar-ucapan");
+    if (!container) return;
 
-    fetch(scriptURL)
+    if (!SCRIPT_URL.includes('/exec')) {
+        container.innerHTML = '<div class="text-center small opacity-50 py-3">URL Script belum disetting.</div>';
+        return;
+    }
+
+    fetch(SCRIPT_URL)
     .then(response => response.json())
     .then(data => {
         if (!data || data.length === 0) {
-            daftarUcapan.innerHTML = '<div class="text-center py-5 opacity-75 text-cream">Belum ada ucapan. Jadilah yang pertama!</div>';
+            container.innerHTML = '<div class="text-center small opacity-50 py-3">Belum ada ucapan. Jadilah yang pertama!</div>';
             return;
         }
 
         let html = '';
         data.forEach(item => {
-            // Validasi data kosong
-            const nama = item.nama ? item.nama : 'Tanpa Nama';
-            const status = item.status ? item.status : 'Hadir';
-            const pesan = item.pesan ? item.pesan : '';
-
-            let badgeClass = 'bg-secondary';
-            if(status === 'Hadir') badgeClass = 'bg-success';
-            if(status === 'Tidak Hadir') badgeClass = 'bg-danger';
+            // Tentukan warna badge status
+            let badgeColor = 'bg-secondary';
+            if (item.status === 'Hadir') badgeColor = 'bg-success';
+            if (item.status === 'Tidak Hadir') badgeColor = 'bg-danger';
 
             html += `
-            <div class="ucapan-item animate__animated animate__fadeIn">
-                <div class="d-flex align-items-center mb-2">
-                    <div class="fw-bold text-cream me-2">${nama}</div>
-                    <span class="badge ${badgeClass}" style="font-size: 0.6rem;">${status}</span>
+            <div class="ucapan-item mb-2 p-2 rounded" style="background: rgba(250,247,240,0.1); border: 1px solid rgba(250,247,240,0.1);">
+                <div class="d-flex align-items-center mb-1">
+                    <span class="fw-bold text-cream me-2" style="font-size: 0.9rem;">${item.nama}</span>
+                    <span class="badge ${badgeColor}" style="font-size: 0.6rem;">${item.status}</span>
                 </div>
-                <p class="small text-cream opacity-75 mb-0 fst-italic">"${pesan}"</p>
+                <p class="small text-cream opacity-75 mb-0 fst-italic">"${item.pesan}"</p>
             </div>
             `;
         });
-        
-        daftarUcapan.innerHTML = html;
+        container.innerHTML = html;
     })
-    .catch(error => {
-        console.error('Gagal load ucapan:', error);
-        daftarUcapan.innerHTML = '<div class="text-center py-5 text-warning small">Gagal memuat data.</div>';
+    .catch(err => {
+        console.error(err);
+        container.innerHTML = '<div class="text-center small text-danger py-3">Gagal memuat data.</div>';
     });
 }
 
 
-// =============================================================================
-// 5. COUNTDOWN & ANIMATION
-// =============================================================================
-
-const hitungMundur = setInterval(function() {
-    const sekarang = new Date().getTime();
-    const selisih = tanggalTujuan - sekarang;
-
-    const elHari = document.getElementById("days");
-    const elJam = document.getElementById("hours");
-    const elMenit = document.getElementById("minutes");
-    const elDetik = document.getElementById("seconds");
-
-    if (elHari && elJam && elMenit && elDetik) {
-        const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
-        const jam = Math.floor((selisih % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
-        const detik = Math.floor((selisih % (1000 * 60)) / 1000);
-
-        elHari.innerText = hari < 10 ? "0" + hari : hari;
-        elJam.innerText = jam < 10 ? "0" + jam : jam;
-        elMenit.innerText = menit < 10 ? "0" + menit : menit;
-        elDetik.innerText = detik < 10 ? "0" + detik : detik;
+// ============================================================================
+// 4. FUNGSI GLOBAL (BUKA UNDANGAN & COPY)
+// ============================================================================
+function bukaUndangan() {
+    const hero = document.getElementById("hero");
+    const audio = document.getElementById("song");
+    
+    // Animasi Cover Naik
+    if(hero) {
+        hero.style.transform = "translateY(-100vh)";
+        hero.style.transition = "transform 1s ease-in-out";
     }
-
-    if (selisih < 0) {
-        clearInterval(hitungMundur);
+    
+    // Tampilkan Konten Utama
+    document.getElementById("main-content").style.display = "block";
+    document.getElementById("audio-container").style.display = "block";
+    
+    // Putar Lagu
+    if(audio) audio.play().catch(e => console.log("Audio autoplay blocked"));
+    
+    // Init Animasi AOS (Supaya jalan pas dibuka)
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 1000, once: true });
     }
+    
+    // Scroll ke Page 1
+    setTimeout(() => {
+        document.getElementById("page-1").scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+}
+
+function copyText(id) {
+    const el = document.getElementById(id);
+    if(el) {
+        navigator.clipboard.writeText(el.innerText).then(() => {
+            alert("Berhasil disalin: " + el.innerText);
+        });
+    }
+}
+
+
+// ============================================================================
+// 5. COUNTDOWN TIMER
+// ============================================================================
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = TARGET_DATE - now;
+    
+    if (diff < 0) return;
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const setVal = (id, val) => {
+        const el = document.getElementById(id);
+        if(el) el.innerText = val < 10 ? "0" + val : val;
+    };
+
+    setVal("days", d);
+    setVal("hours", h);
+    setVal("minutes", m);
+    setVal("seconds", s);
 }, 1000);
-
-// Init AOS Animation
-if (typeof AOS !== 'undefined') {
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-    });
-}
