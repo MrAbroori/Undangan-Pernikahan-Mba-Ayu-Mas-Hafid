@@ -59,51 +59,50 @@ body {
     --gold-accent: #C5A059; /* Warna Emas untuk Teks Wedding */
 }
 
-/* 1. Container Utama (Membagi Layar) */
+/* =========================================
+   HERO SECTION (FIXED & CLEAN)
+   ========================================= */
+
 .hero-container {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100vh;
     z-index: 9999;
     
-    /* PENTING: Flex Column untuk membagi Atas & Bawah */
+    /* Layout Atas-Bawah */
     display: flex;
     flex-direction: column; 
     
-    background-color: var(--green); /* Fallback color */
+    background-color: var(--green);
     overflow: hidden;
-    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
-    padding: 0; /* Reset padding container */
+    padding: 0;
 }
 
-/* --- BAGIAN ATAS: CREAM (50% Tinggi) --- */
-/* Area ini khusus untuk Inisial A-Tulip-H */
+/* --- BAGIAN ATAS: CREAM (50%) --- */
 .hero-content {
-    flex: 1;         /* Mengambil 1 bagian */
-    height: 50%;     /* Paksa tinggi 50% */
+    flex: 1; /* Ambil 50% */
+    height: 50%;
     width: 100%;
     background-color: var(--cream-bg);
-    
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 5;
-    margin-bottom: 0; /* Hapus margin bawah */
 }
 
-/* Kotak Inisial Presisi (Style Gambar Referensi) */
+/* KOTAK INISIAL */
 .inisial-box-final {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 280px; 
-    height: 250px; /* Sedikit dipendekkan agar muat di 50% layar */
+    height: 250px;
 }
 
 .inisial-huruf {
     font-family: var(--font-heading);
-    font-size: 8rem; /* Disesuaikan agar muat di separuh layar */
+    font-size: 8rem;
     color: var(--green-dark);
     line-height: 1;
     position: absolute;
@@ -114,92 +113,91 @@ body {
 .huruf-h { bottom: 0; right: 0; transform: translate(10px, 20px); }
 
 .bunga-tulip {
-    width: 90px; /* Disesuaikan */
+    width: 90px;
     height: auto;
     z-index: 2;
     transform: translateY(5px);
     filter: drop-shadow(0 5px 15px rgba(74, 93, 67, 0.2));
 }
 
-/* --- BAGIAN BAWAH: HIJAU (50% Tinggi) --- */
-/* Area ini untuk Teks & Tombol */
+/* --- BAGIAN BAWAH: HIJAU (50%) --- */
 .hero-bottom-wrapper {
-    flex: 1;         /* Mengambil 1 bagian sisanya */
-    height: 50%;     /* Paksa tinggi 50% */
+    flex: 1; /* Ambil 50% */
+    height: 50%;
     width: 100%;
-    background-color: var(--green); /* BACKGROUND HIJAU */
+    background-color: var(--green); /* HIJAU SAGE */
     
-    /* Dekorasi Lengkungan di perbatasan */
+    /* Lengkungan */
     border-radius: 40px 40px 0 0;
-    margin-top: -30px; /* Tarik ke atas agar menutupi cream sedikit */
+    margin-top: -30px; /* Overlap ke atas */
     
     position: relative;
-    z-index: 10;     /* Di atas layer cream */
+    z-index: 10;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+    padding: 20px;
 }
 
-/* Penyesuaian Teks di Background Hijau */
-.hero-bottom-wrapper .the-wedding-text {
-    color: var(--cream); /* Ubah jadi Cream */
-    font-size: 0.7rem;
-    opacity: 0.8;
+/* WRAPPER KONTEN TENGAH */
+.content-wrapper {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.hero-bottom-wrapper .nama-mempelai-hero {
-    color: var(--cream); /* Ubah jadi Cream */
-    font-size: 2.2rem;   /* Ukuran pas untuk HP */
-    margin-bottom: 15px;
+/* TYPOGRAPHY */
+.the-wedding-text {
+    font-family: var(--font-body);
+    font-size: 0.7rem; letter-spacing: 4px; color: var(--cream); opacity: 0.8; margin-bottom: 10px;
 }
 
-.hero-bottom-wrapper .dan-simbol {
-    color: var(--gold);
+.nama-mempelai-hero {
+    font-family: var(--font-heading);
+    font-size: 2.2rem; color: var(--cream); margin-bottom: 20px;
 }
 
-/* Kotak Tamu di Background Hijau */
+.dan-simbol { color: var(--gold-accent); }
+
+/* KOTAK TAMU */
 .tamu-box-final {
-    background: rgba(255, 255, 255, 0.1); /* Transparan */
+    background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(250, 247, 240, 0.3);
-    padding: 10px 20px;
-    margin-bottom: 15px;
-    width: fit-content;
-    min-width: 200px;
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
     backdrop-filter: blur(5px);
+    width: fit-content;
 }
 
-.tamu-box-final .kepada-text { color: var(--cream); font-size: 0.75rem; }
-.tamu-box-final .nama-tamu-final { color: var(--cream); font-size: 1.1rem; }
-.tamu-box-final .maaf-text { color: var(--cream); opacity: 0.6; }
+.kepada-text { font-size: 0.75rem; color: var(--cream); margin-bottom: 5px; }
+.nama-tamu-final { font-family: var(--font-body); font-size: 1.1rem; color: var(--cream); margin: 0; }
+.maaf-text { font-size: 0.6rem; font-style: italic; color: var(--cream); opacity: 0.7; margin-top: 5px; }
 
-/* Tombol Buka (Versi Cream karena BG Hijau) */
+/* TOMBOL */
 .btn-buka-final {
-    background-color: var(--cream);
-    color: var(--green);
-    border: none;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    padding: 10px 30px;
-    font-size: 0.75rem;
+    background-color: var(--cream); color: var(--green); border: none;
+    padding: 10px 30px; border-radius: 50px; font-weight: 600; font-size: 0.75rem;
+    letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.btn-buka-final:hover {
-    background-color: var(--gold);
-    color: var(--cream);
-    transform: translateY(-2px);
-}
-
-/* --- RESPONSIF HP LAYAR PENDEK --- */
+/* --- RESPONSIF YANG BENAR (Sinkron Class Name) --- */
 @media (max-height: 700px) {
+    /* Gunakan class yang benar: .huruf-a, .huruf-h, .bunga-tulip */
     .inisial-huruf { font-size: 6rem; }
     .bunga-tulip { width: 70px; }
-    .inisial-box-final { width: 200px; height: 180px; }
+    .huruf-a { transform: translate(-5px, -5px); }
+    .huruf-h { transform: translate(5px, 10px); }
     
-    .hero-bottom-wrapper .nama-mempelai-hero { font-size: 1.8rem; margin-bottom: 10px; }
-    .tamu-box-final { padding: 8px 15px; margin-bottom: 10px; }
+    .nama-mempelai-hero { font-size: 1.8rem; margin-bottom: 15px; }
+    .tamu-box-final { padding: 10px 15px; margin-bottom: 15px; }
 }
 
 /* --- BUTTONS --- */
