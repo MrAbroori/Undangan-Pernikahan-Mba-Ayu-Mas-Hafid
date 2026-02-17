@@ -287,12 +287,12 @@ body {
 
     /* Paksa Huruf A Geser Masuk ke Kanan */
     .huruf-a {
-        transform: translate(15px, 5px) !important; 
+        transform: translate(17px, 10px) !important; 
     }
 
     /* Paksa Huruf H Geser Masuk ke Kiri */
     .huruf-h {
-        transform: translate(-15px, -15px) !important;
+        transform: translate(-17px, -20px) !important;
     }
 
     .bunga-tulip {
