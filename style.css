@@ -53,161 +53,161 @@ body {
 }
 
 /* HERO SECTION */
-.hero-container {
-    position: fixed; 
+.hero-split-container {
+    position: fixed;
     top: 0; left: 0; width: 100%; height: 100vh;
     z-index: 9999;
-    
-    /* Background Mewah */
-    background: radial-gradient(circle at center, #FAF7F0 20%, #EBE5D5 100%);
-    
-    display: flex; flex-direction: column; 
-    /* Ubah ini agar konten tersebar lebih rapi */
-    justify-content: center; 
-    align-items: center;
+    display: flex;
+    flex-direction: column; /* Susun Atas-Bawah */
     overflow: hidden;
-    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 1s ease-in-out;
 }
 
-/* CONTAINER TENGAH (JUDUL, INISIAL, NAMA) */
-.hero-content { 
-    flex-grow: 1; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; /* Konten benar-benar di tengah layar */
+/* --- BAGIAN ATAS (CREAM) --- */
+.hero-top-cream {
+    flex: 4; /* Mengambil 40% tinggi layar (atau menyesuaikan isi) */
+    background-color: var(--cream);
+    display: flex;
+    justify-content: center;
     align-items: center;
-    width: 100%;
-    margin-top: -20px; /* Sedikit naik biar tidak mepet bawah */
-}
-
-/* 1. JUDUL "THE WEDDING OF" (EMAS & CETAR) */
-.text-tracking-top {
-    font-family: var(--font-heading); /* Ganti font jadi Serif biar cetar */
-    font-size: 1.2rem;
-    letter-spacing: 5px; 
-    color: var(--gold); /* WARNA EMAS */
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-/* 2. INISIAL (UKURAN DIPERBAIKI) */
-.inisial-box {
     position: relative;
-    height: 160px; /* Tinggi dikurangi biar gak makan tempat */
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 10px;
+    padding-top: 20px;
 }
 
-.inisial-huruf {
+.inisial-box-simple {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Jarak antar huruf dan bunga */
+}
+
+.inisial-huruf-simple {
     font-family: var(--font-heading);
-    font-size: 7.5rem; /* Ukuran pas (tidak raksasa) */
+    font-size: 6rem; /* Ukuran Besar */
+    color: var(--green);
     line-height: 1;
-    color: var(--green);
-    position: relative;
-    z-index: 1;
-    text-shadow: 3px 3px 0px rgba(197, 160, 89, 0.25); 
 }
 
-.huruf-kiri {
-    transform: translateY(-25px); 
-    margin-right: -25px; 
+.bunga-tegak {
+    width: 80px;
+    transform: rotate(0deg); /* TIDAK MIRING */
+    filter: drop-shadow(0 5px 10px rgba(74, 86, 58, 0.2));
 }
 
-.huruf-kanan {
-    transform: translateY(25px); 
-    margin-left: -25px; 
-}
-
-.bunga-tengah {
-    width: 110px; /* Ukuran bunga diperkecil sedikit */
-    z-index: 2;
-    filter: drop-shadow(0 10px 15px rgba(74, 86, 58, 0.15));
-    transform: rotate(10deg);
-}
-
-/* 3. NAMA LENGKAP & TANGGAL */
-.nama-lengkap-hero {
-    font-family: var(--font-heading);
-    font-size: 2.5rem; /* Ukuran standar elegan */
-    font-style: italic;
-    color: var(--green);
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.tanggal-hero {
-    border-top: 1px solid var(--green);
-    border-bottom: 1px solid var(--green);
-    padding: 6px 20px;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    color: var(--green);
-    text-transform: uppercase;
-}
-
-/* 4. KOTAK BAWAH (DIBUAT LEBIH PENDEK & NAIK) */
-.hero-bottom {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-.content-box.glass-effect {
-    background: rgba(250, 247, 240, 0.85);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border-radius: 25px 25px 0 0;
-    width: 100%; max-width: 450px; /* Lebar dibatasi */
-    box-shadow: 0 -10px 40px rgba(0,0,0,0.05);
-    border-top: 1px solid rgba(255,255,255,0.6);
-    
-    /* PENTING: Padding dikurangi biar gak tinggi banget */
-    padding: 20px 20px 30px 20px !important; 
-    margin: 0 auto; /* Tengah */
-}
-
-/* 5. TEXT DI DALAM KOTAK */
-.salam-pembuka { font-size: 0.85rem; margin-bottom: 5px; }
-.nama-tamu { font-size: 1.5rem; margin-bottom: 5px; color: var(--green); font-weight: bold;}
-.kalimat-undangan { font-size: 0.8rem; margin-bottom: 15px; line-height: 1.4; }
-
-
-/* 6. TOMBOL BUKA UNDANGAN (KECIL & MANIS) */
-.btn-buka-undangan {
+/* --- BAGIAN BAWAH (HIJAU) --- */
+.hero-bottom-green {
+    flex: 6; /* Mengambil 60% tinggi layar */
     background-color: var(--green);
-    color: var(--cream);
-    border: none;
-    padding: 10px 25px; 
-    border-radius: 50px;
+    border-radius: 40px 40px 0 0; /* Lengkungan di atas agar elegan */
+    margin-top: -30px; /* Menarik ke atas sedikit agar nutup bagian cream */
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 500px;
+    color: var(--cream); /* Semua teks jadi Cream */
+}
+
+/* Typography di Bagian Hijau */
+.the-wedding-text {
     font-family: var(--font-body);
     font-size: 0.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.nama-mempelai-hero {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.dan-simbol {
+    font-family: var(--font-script);
+    color: var(--gold); /* Emas */
+    font-size: 2rem;
+    margin: 0 10px;
+}
+
+.custom-divider {
+    width: 100px;
+    height: 1px;
+    background-color: var(--cream);
+    margin: 0 auto 20px auto;
+    opacity: 0.5;
+}
+
+.kepada-text {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+/* --- DESAIN KOTAK NAMA TAMU --- */
+.tamu-box {
+    background: rgba(255, 255, 255, 0.1); /* Transparan Putih */
+    border: 1px solid rgba(250, 247, 240, 0.3); /* Border tipis cream */
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.nama-tamu-text {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--cream);
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+.maaf-text {
+    font-size: 0.7rem;
+    font-style: italic;
+    opacity: 0.7;
+    margin-bottom: 25px;
+}
+
+/* --- TOMBOL BUKA (VERSI CREAM) --- */
+.btn-buka-special {
+    background-color: var(--cream);
+    color: var(--green); /* Teks Hijau */
+    border: none;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-family: var(--font-body);
     font-weight: 600;
     letter-spacing: 1px;
-    transition: all 0.3s;
-    box-shadow: 0 4px 10px rgba(74, 86, 58, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
 }
 
-.btn-buka-undangan:hover {
-    transform: translateY(-2px);
-    background-color: #3e4830;
+.btn-buka-special:hover {
+    background-color: var(--gold);
+    color: var(--cream);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* --- RESPONSIF KHUSUS HP KECIL (iPhone SE, Android Kecil) --- */
+/* Responsif HP Kecil */
 @media (max-height: 700px) {
-    /* Perkecil elemen jika layar pendek */
-    .inisial-huruf { font-size: 5.5rem; }
-    .bunga-tengah { width: 80px; }
-    .inisial-box { height: 120px; }
-    .huruf-kiri { transform: translateY(-15px); }
-    .huruf-kanan { transform: translateY(15px); }
-    
-    .text-tracking-top { font-size: 1rem; margin-bottom: 1rem; }
-    .nama-lengkap-hero { font-size: 2rem; margin-top: 0.5rem; }
-    
-    /* Kotak bawah dipendekkan lagi */
-    .content-box.glass-effect { padding: 15px 15px 25px 15px !important; }
-    .kalimat-undangan { display: none; } /* Hilangkan kalimat panjang di HP sangat kecil */
+    .hero-top-cream { flex: 3; }
+    .hero-bottom-green { flex: 7; padding: 20px; }
+    .inisial-huruf-simple { font-size: 4.5rem; }
+    .bunga-tegak { width: 60px; }
+    .nama-mempelai-hero { font-size: 2.2rem; margin-bottom: 15px; }
+    .tamu-box { padding: 15px; margin-bottom: 10px; }
+    .btn-buka-special { padding: 10px 30px; }
 }
 
 /* --- BUTTONS --- */

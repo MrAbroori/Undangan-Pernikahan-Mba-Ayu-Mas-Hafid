@@ -28,38 +28,43 @@
         </button>
     </div>
 
-<section id="hero" class="hero-container">
-        <img src="assets/bunga-02.svg" class="ornamen-pojok-kiri-atas" alt="ornamen">
-        <img src="assets/bunga-03.svg" class="ornamen-pojok-kanan-atas" alt="ornamen">
+    <section id="hero" class="hero-split-container">
+        
+        <div class="hero-top-cream">
+            <img src="assets/bunga-02.svg" class="ornamen-pojok-kiri-atas" alt="ornamen">
+            <img src="assets/bunga-03.svg" class="ornamen-pojok-kanan-atas" alt="ornamen">
 
-        <div class="hero-content d-flex flex-column justify-content-center align-items-center text-center">
-            <p class="text-tracking-top mb-4 animate-up opacity-75">THE WEDDING OF</p>
-            
-            <div class="inisial-box d-flex align-items-center justify-content-center mt-2 animate-zoom">
-                <span class="inisial-huruf huruf-kiri">A</span>
-                <img src="assets/bunga-01.svg" alt="Flower" class="bunga-tengah">
-                <span class="inisial-huruf huruf-kanan">H</span>
+            <div class="inisial-box-simple animate-zoom">
+                <span class="inisial-huruf-simple">A</span>
+                <img src="assets/bunga-01.svg" alt="Flower" class="bunga-tegak">
+                <span class="inisial-huruf-simple">H</span>
             </div>
-
-            <div class="nama-lengkap-hero mt-5 animate-up delay-1">Ayu & Hafidz</div>
-            <p class="tanggal-hero mt-3 animate-up delay-2">Sabtu, 04 April 2026</p>
         </div>
 
-        <div class="hero-bottom d-flex flex-column justify-content-end align-items-center text-center pb-5">
-            <div class="content-box glass-effect p-4">
-                <p class="salam-pembuka mb-2">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-                <div class="tamu-wrapper mb-3">
-                    <h2 id="nama-tamu" class="nama-tamu">Tamu Undangan</h2>
-                </div>
-                <p class="kalimat-undangan mb-4 small opacity-75">
-                    Tanpa mengurangi rasa hormat, kami bermaksud mengundang Anda untuk hadir di acara pernikahan kami.
-                </p>
+        <div class="hero-bottom-green">
+            <div class="content-wrapper text-center animate-up">
                 
-                <button type="button" class="btn-buka-undangan shadow-sm" onclick="bukaUndangan()">
+                <p class="the-wedding-text">THE WEDDING OF</p>
+                <h1 class="nama-mempelai-hero">Ayu <span class="dan-simbol">&</span> Hafidz</h1>
+                
+                <div class="custom-divider"></div>
+
+                <p class="kepada-text">Kepada Bapak/Ibu/Saudara/i</p>
+                
+                <div class="tamu-box shadow-sm">
+                    <h2 id="nama-tamu" class="nama-tamu-text">Tamu Undangan</h2>
+                </div>
+
+                <p class="maaf-text">
+                    *Mohon maaf apabila ada kesalahan dalam penulisan nama/gelar
+                </p>
+
+                <button type="button" class="btn-buka-special shadow" onclick="bukaUndangan()">
                     <i class="fas fa-envelope-open me-2"></i> Buka Undangan
                 </button>
             </div>
         </div>
+
     </section>
 
 
