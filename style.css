@@ -234,37 +234,64 @@ body {
 }
 
 /* =========================================
-   3. PAGE 1: FOTO LINGKARAN, NAMA SEBARIS & COUNTDOWN TRANSPARAN
-   *(Sudah Diperkecil / Zoom-Out Minimalis)*
+   REVISI TOTAL FOTO PAGE 1 (KHUSUS GAMBAR TRANSPARAN)
+   agar lebih cantik, timbul, dan tidak nabrak pinggir.
    ========================================= */
 
-/* --- REVISI PAGE 1: BINGKAI FOTO (Ubah dari Lingkaran ke Oval/Arch Panjang) --- */
+/* 1. BINGKAI (The Frame) */
 .frame-lingkaran {
-    /* Lebar dibuat lebih ramping (zoomed-out) */
+    /* Ukuran Bingkai Oval (Tetap sama seperti sebelumnya) */
     width: clamp(140px, 35vw, 180px);
-    
-    /* Tinggi dibuat LEBIH BESAR dari lebar untuk mengakomodasi foto panjang */
     height: clamp(200px, 50vw, 260px);
-    
-    /* border-radius besar membuat sudutnya sangat lonjong, bukan lingkaran */
-    border-radius: 150px; 
-    
-    border: 3px solid var(--green); /* Tetap menggunakan garis hijau */
-    overflow: hidden;
+    border-radius: 150px;
+    border: 3px solid var(--green);
+    margin: 0 auto 20px auto;
     position: relative;
     z-index: 2;
-    margin: 0 auto 20px auto; /* Tambah sedikit jarak di bawahnya */
+    overflow: hidden;
+
+    /* --- PERUBAHAN BARU UNTUK ESTETIKA --- */
     
-    /* Tambahan bayangan lembut agar bingkai terasa timbul dan mewah */
-    box-shadow: 0 10px 25px rgba(91, 105, 70, 0.15);
+    /* Mengatur posisi gambar di dalam agar di tengah-bawah */
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+
+    /* Memberi background samar terang di dalam bingkai agar gambar lebih 'keluar' */
+    background: rgba(255, 255, 255, 0.4);
+
+    /* KOMBINASI BAYANGAN:
+       1. inset: Bayangan ke dalam, memberi kesan kedalaman (seperti ceruk)
+       2. Bayangan luar: Memberi kesan bingkai melayang */
+    box-shadow: inset 0 -10px 20px rgba(91, 105, 70, 0.1), /* Inner shadow halus di bawah */
+                0 10px 25px rgba(91, 105, 70, 0.15); /* Outer shadow */
 }
 
-/* Pastikan gambar mengisi bingkai oval tersebut */
+/* 2. GAMBAR PENGANTIN (The Image) */
 .img-berdua {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Gambar akan mengisi penuh tanpa terdistorsi */
-    object-position: center top; /* Prioritaskan bagian tengah-atas (wajah) */
+    /* --- PERUBAHAN UKURAN (Agar tidak nabrak dinding) --- */
+    width: auto; /* Biarkan lebar menyesuaikan tinggi secara proporsional */
+    height: 92%; /* TINGGI DIKURANGI (tidak 100%) agar ada jarak di atas */
+    max-width: 95%; /* Penjaga agar tidak terlalu melebar jika di layar tertentu */
+    
+    /* HAPUS 'object-fit: cover' karena kita tidak ingin dia memenuhi bingkai lagi */
+    /* object-fit: cover; <-- INI DIHAPUS */
+
+    /* --- PERUBAHAN ESTETIKA BARU --- */
+    
+    /* Memberi bayangan pada PNG transparan agar terlihat TIMBUL (pop-out) */
+    filter: drop-shadow(0 5px 8px rgba(91, 105, 70, 0.25));
+
+    /* Sedikit trik agar bagian bawah gambar benar-benar menempel di dasar bingkai */
+    margin-bottom: -2px; 
+    
+    transition: all 0.5s ease;
+}
+
+/* Efek tambahan saat hover di desktop (Opsional, agar lebih interaktif) */
+.frame-lingkaran:hover .img-berdua {
+    transform: scale(1.03); /* Membesar sedikit sekali saat disentuh */
+    filter: drop-shadow(0 8px 12px rgba(91, 105, 70, 0.3));
 }
 
 /* Nama Sebaris Elegan (Sesuai Janji: Font Cormorant & Emas) */
