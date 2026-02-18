@@ -582,3 +582,30 @@ button.btn-buka-final:hover {
     /* Mematikan interaksi agar tidak bisa diklik saat sedang menghilang */
     pointer-events: none !important;
 }
+
+/* =========================================
+   FOOTER / PENUTUP (Gaya Nama & Border)
+   ========================================= */
+
+/* Gaya Nama di Footer (Meniru Page 1 tapi dipastikan warna Hijau) */
+.nama-mempelai-footer {
+    font-family: var(--font-heading);
+    /* Ukuran responsif: besar di HP, sangat besar di desktop */
+    font-size: clamp(3rem, 8vw, 5rem); 
+    font-weight: 600;
+    font-style: italic;
+    color: var(--green); /* Pastikan warnanya hijau */
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+/* Memastikan simbol & emas ukurannya proporsional */
+.nama-mempelai-footer .dan-simbol-emas {
+     font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+/* Helper khusus untuk border warna hijau (pengganti border-light) */
+.border-green {
+    border-color: var(--green) !important;
+}
