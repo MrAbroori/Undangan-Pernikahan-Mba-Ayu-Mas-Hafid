@@ -14,10 +14,10 @@ section {
 
 /* --- VARIABLES & FONTS --- */
 :root {
-    --cream: #FAF7F0;     /* Cream Utama */
-    --cream-dark: #E6E2D6; /* Cream agak gelap untuk border/input */
-    --green: #4A563A;     /* Hijau Sage Deep */
-    --gold: #C5A059;      /* Emas (Aksen Dikit) */
+    --cream: #faf3dd;      /* Cream Request Baru */
+    --cream-dark: #e8e1c9; /* Disesuaikan sedikit untuk border jika butuh */
+    --green: #5b6946;      /* Hijau Sage Request Baru */
+    --gold: #C5A059;       /* Emas (Aksen Dikit) */
     
     --font-heading: 'Cormorant Garamond', serif;
     --font-body: 'Montserrat', sans-serif;
@@ -355,6 +355,43 @@ body {
     padding: 8px 30px; border-radius: 50px; font-size: 0.9rem; letter-spacing: 1px;
 }
 
+/* --- REVISI PAGE 1 (FOTO LINGKARAN & NAMA SEBARIS) --- */
+.frame-lingkaran {
+    width: clamp(140px, 40vw, 220px); 
+    height: clamp(140px, 40vw, 220px);
+    border-radius: 50%;
+    border: 3px solid var(--green); /* Menggunakan warna hijau */
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+}
+
+.img-berdua {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.nama-mempelai-sebaris {
+    font-family: var(--font-script);
+    font-size: clamp(2.5rem, 8vw, 4rem); /* Fleksibel di HP & Desktop */
+    color: var(--green);
+    line-height: 1.2;
+    z-index: 2;
+    position: relative;
+    margin: 0;
+}
+
+.quote-text-revisi {
+    max-width: 600px; 
+    color: var(--green); 
+    opacity: 0.85;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 /* Ampersand Raksasa */
 .ampersand-huge {
     font-family: var(--font-script);
@@ -601,67 +638,53 @@ body {
     animation: zoomIn 1.2s ease-out forwards;
 }
 
-/* Container pembungkus semua kotak */
+/* --- COUNTDOWN TRANSPARAN --- */
 #countdown {
     perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
-/* Desain per kotak */
 .time-box {
-    background-color: #ffffff; /* Latar putih bersih agar angka nampak jelas */
-    border: 1px solid var(--green); /* Garis tepi hijau sage */
+    background-color: transparent !important; /* Wajib Transparan */
+    border: 1px solid var(--green); /* Garis tepi hijau */
     
-    /* Ukuran kotak (Sama lebar dan tinggi agar simetris) */
-    width: 80px;
-    height: 90px;
+    width: 75px;
+    height: 85px;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
-    border-radius: 12px; /* Sudut kotak agak melengkung */
-    
-    /* Efek bayangan agar kotak terlihat timbul */
-    box-shadow: 0 4px 15px rgba(74, 86, 58, 0.15);
-    
-    position: relative;
-    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: none !important; /* Hilangkan bayangan */
 }
 
-/* Dekorasi garis di tengah kotak (opsional, memberikan kesan lipatan kartu) */
+/* Hilangkan garis tengah lipatan kartu versi sebelumnya */
 .time-box::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: rgba(74, 86, 58, 0.05);
+    display: none; 
 }
 
-/* Angka Besar di dalam kotak */
 .time-number {
     font-family: var(--font-heading);
     font-size: 2.2rem;
     font-weight: 700;
-    color: var(--green);
+    color: var(--green) !important; /* Paksa warna hijau */
     line-height: 1;
-    z-index: 2;
 }
 
-/* Label di bawah angka */
 .time-label {
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: var(--green);
+    color: var(--green) !important; /* Paksa warna hijau */
     margin-top: 5px;
     font-weight: 600;
-    z-index: 2;
 }
 
-/* Responsif untuk layar HP kecil */
+/* Responsif Countdown untuk layar HP kecil */
 @media (max-width: 576px) {
     .time-box {
         width: 65px;
@@ -669,14 +692,14 @@ body {
         border-radius: 8px;
     }
     .time-number {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
     .time-label {
         font-size: 0.55rem;
         letter-spacing: 1px;
     }
     #countdown {
-        gap: 8px !important; /* Jarak antar kotak lebih rapat di HP */
+        gap: 8px !important;
     }
 }
 
