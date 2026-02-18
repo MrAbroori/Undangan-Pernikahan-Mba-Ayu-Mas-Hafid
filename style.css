@@ -565,3 +565,20 @@ button.btn-buka-final:hover {
     .nama-mempelai-hero { font-size: 1.6rem; margin-bottom: 10px; }
     .btn-buka-final { padding: 10px 30px; }
 }
+
+/* =========================================
+   ANIMASI BUKA UNDANGAN (SAMPUL TERANGKAT)
+   ========================================= */
+.hero-slide-up {
+    /* Mengangkat seluruh sampul ke atas sejauh tinggi layar */
+    transform: translateY(-100vh) !important; 
+    
+    /* Sambil perlahan memudar */
+    opacity: 0 !important; 
+    
+    /* Durasi dan gaya gerakan (cubic-bezier membuat efek mulus di akhir) */
+    transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1), opacity 1s ease-in-out !important;
+    
+    /* Mematikan interaksi agar tidak bisa diklik saat sedang menghilang */
+    pointer-events: none !important;
+}
