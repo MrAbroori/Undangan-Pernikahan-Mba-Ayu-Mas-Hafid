@@ -168,58 +168,54 @@ body {
 .maaf-text { font-size: 0.6rem; font-style: italic; color: var(--cream-bg); opacity: 0.6; margin: 5px 0 0 0; }
 
 /* =========================================
-   REVISI WARNA SEMUA TOMBOL 
-   (Normal: Hijau, Ditekan/Hover: Cream)
+   BAGIAN TOMBOL (FULL REVISI WARNA FIX)
    ========================================= */
 
-/* 1. Tombol Buka Undangan (Hero) */
-.btn-buka-final {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 12px 40px; border-radius: 50px;
-    font-family: var(--font-body), sans-serif; font-weight: 700; letter-spacing: 1px;
-    text-transform: uppercase; font-size: 0.8rem; cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;
-    
-    /* Warna Baru */
-    background-color: var(--green) !important; 
+/* 1. KELOMPOK TOMBOL UTAMA 
+   (Buka Undangan, Kalender, Lokasi, Info Pengiriman, WhatsApp) 
+   Normal: Background Hijau, Teks Cream */
+.btn-buka-final,
+.btn-outline-green,
+.btn-custom-green {
+    background-color: var(--green) !important;
     color: var(--cream) !important;
     border: 1px solid var(--green) !important;
-}
-.btn-buka-final:hover, .btn-buka-final:active { 
-    background-color: var(--cream) !important; 
-    color: var(--green) !important; 
-    transform: translateY(-3px); 
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* 2. Tombol Kalender, Lokasi, WhatsApp, Instagram (.btn-outline-green) */
-.btn-outline-green {
-    padding: 10px 25px; border-radius: 50px; 
-    transition: all 0.3s ease;
-    
-    /* Warna Baru */
-    background-color: var(--green) !important; 
-    color: var(--cream) !important; 
+/* Saat Ditekan/Disentuh (Hover): Background Cream, Teks Hijau */
+.btn-buka-final:hover,
+.btn-outline-green:hover,
+.btn-custom-green:hover {
+    background-color: var(--cream) !important;
+    color: var(--green) !important;
     border: 1px solid var(--green) !important;
+    transform: translateY(-3px); /* Efek melayang sedikit */
+    box-shadow: 0 6px 15px rgba(91, 105, 70, 0.2) !important;
 }
-.btn-outline-green:hover, .btn-outline-green:active { 
-    background-color: var(--cream) !important; 
-    color: var(--green) !important; 
+
+/* Memastikan ikon di dalam tombol utama warnanya ikut menyesuaikan */
+.btn-buka-final i,
+.btn-outline-green i,
+.btn-custom-green i {
+    color: inherit !important;
 }
 
 /* 3. Tombol Copy Saldo & Kirim RSVP (.btn-light-green) - TETAP CREAM (TIDAK DITUKAR) */
 .btn-light-green {
-    background-color: var(--cream) !important; 
+    background-color: var(--cream) !important;
     color: var(--green) !important;
-    border: none !important; 
-    padding: 12px; 
-    border-radius: 10px; 
-    font-weight: bold;
-    transition: all 0.3s ease;
+    border: 1px solid var(--cream-dark) !important;
+    transition: all 0.3s ease !important;
 }
 
-.btn-light-green:hover, .btn-light-green:active { 
-    background-color: var(--cream-dark) !important; /* Berubah jadi cream agak gelap saat disentuh */
+/* Saat Ditekan/Disentuh (Hover): Background Cream Gelap, Teks Hijau */
+.btn-light-green:hover {
+    background-color: var(--cream-dark) !important;
     color: var(--green) !important;
+    border: 1px solid var(--green) !important;
+    transform: translateY(-2px);
 }
 
 /* 4. Tombol Lihat Info Pengiriman (.btn-custom-green) */
