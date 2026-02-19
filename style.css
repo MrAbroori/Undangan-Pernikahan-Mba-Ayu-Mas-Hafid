@@ -922,3 +922,60 @@ section#page-2 footer {
     font-size: 2.2rem !important; /* Pengecilan judul section */
     margin-bottom: 15px !important;
 }
+
+/* =========================================
+   REVISI HALAMAN WEDDING GIFT (ZOOM-OUT MINIMALIS)
+   (Mengecilkan Judul, Teks, Ikon, dan Tombol di Halaman Gift)
+   ========================================= */
+
+/* 1. Spasi Section Atas-Bawah (Dirapatkan sedikit) */
+section#gift {
+    padding: 60px 0 !important; 
+}
+
+/* 2. Ikon Amplop/Gift di atas (Diperkecil) */
+#gift img.mb-4 {
+    max-width: 45px !important; /* Ikon dikecilkan */
+    margin-bottom: 15px !important;
+    opacity: 0.8 !important;
+}
+
+/* 3. Judul Utama "Wedding Gift" (Lebih elegan, tidak teriak) */
+#gift h2.font-aesthetic,
+#gift .display-4 {
+    font-size: 2rem !important; /* Ukuran font diturunkan drastis */
+    letter-spacing: 0.5px !important;
+    margin-bottom: 15px !important;
+}
+
+/* 4. Teks Deskripsi (Paragraf pengantar) */
+#gift p {
+    font-size: 0.85rem !important; /* Diperkecil agar lebih rapi */
+    line-height: 1.6 !important;
+    max-width: 500px !important; /* Lebar paragraf dirampingkan ke tengah */
+    margin: 0 auto 25px auto !important;
+    font-weight: 300 !important;
+    opacity: 0.85 !important;
+}
+
+/* 5. Tombol Buka Rekening / Kirim Kado (Lebih Tipis & Ramping) */
+#gift button[data-bs-toggle="collapse"],
+#gift .btn-outline-green {
+    padding: 10px 25px !important; /* Tombol dibuat lebih pipih */
+    font-size: 0.75rem !important; /* Huruf di tombol lebih kecil */
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    max-width: 260px !important; /* Lebar tombol dibatasi */
+    margin: 0 auto 10px auto !important;
+    border-width: 1px !important; /* Garis tepi tipis */
+    border-radius: 50px !important;
+    box-shadow: none !important;
+}
+
+/* 6. Spasi dalam area isi rekening (Collapse Body) */
+#gift .collapse .card-body,
+#gift .collapse div {
+    padding-top: 10px !important; 
+    padding-bottom: 0 !important;
+}
