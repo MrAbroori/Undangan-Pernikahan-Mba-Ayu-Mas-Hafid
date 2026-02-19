@@ -699,3 +699,74 @@ button.btn-buka-final:hover {
 .border-green {
     border-color: var(--green) !important;
 }
+
+/* =========================================
+   REVISI PAGE 02 (OUR SPECIAL DAY)
+   TEMA: MINIMALIS, ZOOM-OUT, & ELEGANT
+   ========================================= */
+
+/* 1. Judul "The Special Day" (Kecil & Berjarak) */
+#date .font-aesthetic {
+    font-family: var(--font-body) !important; /* Ganti ke font tegak agar bersih */
+    font-size: 0.85rem !important; 
+    letter-spacing: 4px !important; /* Spasi antar huruf lebar */
+    text-transform: uppercase !important;
+    opacity: 0.8;
+    margin-bottom: 20px !important;
+}
+
+/* 2. Tanggal & Tahun (Minggu, 04 April 2026) */
+#date h2 {
+    font-family: var(--font-heading) !important;
+    font-size: 2rem !important; /* Diperkecil dari ukuran heading biasa */
+    font-weight: 500 !important;
+    color: var(--green) !important;
+    margin-bottom: 30px !important;
+}
+
+/* 3. Hitung Mundur (Countdown) - VERSI MUNGIL */
+#countdown {
+    gap: 10px !important; /* Jarak antar kotak dirapatkan */
+    margin-bottom: 30px !important;
+}
+
+.time-box {
+    width: 55px !important;  /* Lebar diperkecil */
+    height: 65px !important; /* Tinggi diperkecil */
+    background: transparent !important;
+    border: 1px solid rgba(91, 105, 70, 0.3) !important; /* Garis tipis pudar */
+    border-radius: 6px !important;
+}
+
+.time-number {
+    font-size: 1.4rem !important; /* Angka diperkecil */
+    font-weight: 600 !important;
+    margin-bottom: -2px !important;
+}
+
+.time-label {
+    font-size: 0.5rem !important; /* Tulisan hari/jam sangat kecil */
+    letter-spacing: 1px !important;
+    opacity: 0.8;
+}
+
+/* 4. Tombol "Simpan Tanggal" (Lebih Tipis) */
+#date .btn-outline-green {
+    padding: 8px 25px !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 1px !important;
+    border-width: 1px !important;
+    border-radius: 50px !important;
+}
+
+/* 5. Gambar Bunga/Ornamen di Page ini (Jika ada) */
+#date img {
+    max-width: 60px !important; /* Membatasi ukuran bunga agar tidak raksasa */
+    opacity: 0.8 !important;
+    margin-bottom: 15px !important;
+}
+
+/* 6. Penyesuaian Jarak Atas-Bawah (Padding Section) */
+section#date {
+    padding: 60px 0 !important; /* Memberi ruang napas atas bawah */
+}
