@@ -1098,3 +1098,68 @@ section#rsvp {
     opacity: 0.85 !important;
     margin-top: 6px !important;
 }
+
+/* =========================================
+   REVISI PAGE PENUTUP (CLOSING / TERIMA KASIH)
+   TEMA: MINIMALIS, MANIS, & ZOOM-OUT
+   ========================================= */
+
+/* 1. Spasi Section Penutup (Dirapatkan) */
+section#closing {
+    padding: 50px 0 30px 0 !important;
+}
+
+/* 2. Ikon Bunga Penutup (Dikecilkan) */
+section#closing img[src*="bunga-08.svg"] {
+    width: 35px !important; /* Susut dari 50px */
+    margin-bottom: 20px !important;
+}
+
+/* 3. Foto Couple Penutup (Dibuat lebih mungil dari Page 1) */
+section#closing .frame-lingkaran {
+    width: clamp(120px, 35vw, 160px) !important; /* Lebih kecil & manis */
+    height: clamp(170px, 45vw, 230px) !important;
+    margin-bottom: 25px !important;
+}
+
+/* 4. Judul "Terima Kasih" */
+section#closing h2.font-aesthetic {
+    font-size: 1.8rem !important; /* Dikecilkan */
+    margin-bottom: 5px !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* 5. Sub-judul "Atas kehadiran..." */
+section#closing .letter-spacing-small {
+    font-size: 0.65rem !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 25px !important;
+}
+
+/* 6. Paragraf Formal (Kunci Minimalis: Ramping & Rapi) */
+section#closing p.fst-italic {
+    font-size: 0.8rem !important; /* Huruf disusutkan (sebelumnya 1.1rem) */
+    line-height: 1.6 !important;
+    max-width: 500px !important; /* Dibatasi agar tidak meluber ke tepi HP */
+    margin: 0 auto 20px auto !important;
+    font-weight: 300 !important;
+}
+
+/* 7. Kalimat Bahasa Inggris (Hope to see you soon) */
+section#closing p.fw-bold {
+    font-size: 0.75rem !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 40px !important;
+    font-weight: 500 !important; /* Dibuat agak tipis biar elegan */
+    opacity: 0.8 !important;
+}
+
+/* 8. Nama Mempelai Paling Bawah (Proporsional) */
+.nama-mempelai-footer {
+    font-size: clamp(2.5rem, 8vw, 4rem) !important; /* Diturunkan sedikit agar pas */
+    margin-bottom: 10px !important;
+}
+
+.nama-mempelai-footer .dan-simbol-emas {
+    font-size: clamp(2rem, 7vw, 3rem) !important;
+}
