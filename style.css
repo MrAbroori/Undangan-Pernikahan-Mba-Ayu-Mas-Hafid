@@ -446,11 +446,10 @@ button.btn-buka-final:hover {
 .detail-acara p { margin-bottom: 8px; font-weight: 500; }
 
 /* =========================================
-   WEDDING GIFT CARD (PERBAIKAN FINAL)
-   (Tekstur Kembali, Alamat Pas, Tombol Cream)
+   WEDDING GIFT CARD (PERBAIKAN FINAL MULTLAK)
+   (Tekstur Serat Kertas, Logo Besar, Alamat Aman)
    ========================================= */
 
-/* Batasi lebar tombol accordion di atas kartu */
 .btn-block-custom { 
     width: 100%; 
     max-width: 290px !important; 
@@ -461,7 +460,10 @@ button.btn-buka-final:hover {
     width: 100%;
     max-width: 290px !important; 
     margin: 0 auto 20px auto !important; 
-    height: 185px !important; /* Ditinggikan sedikit 10px agar alamat muat sempurna */
+    
+    /* 1. TINGGI DITAMBAH AGAR ALAMAT TIDAK TERPOTONG */
+    height: 195px !important; 
+    
     background: var(--green) !important; 
     border-radius: 12px !important; 
     padding: 18px !important;
@@ -472,34 +474,40 @@ button.btn-buka-final:hover {
     display: flex; flex-direction: column; justify-content: space-between;
 }
 
-/* 1. MENGEMBALIKAN TEKSTUR (Satin Glow & Lingkaran Elegan) */
+/* 2. TEKSTUR DIPERTEGAS (Pola Serat Kertas / Brushed Matte) */
 .card-bg-texture {
-    display: block !important; /* Dihidupkan kembali */
+    display: block !important; 
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-    z-index: 0;
-    background: 
-        radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(197, 160, 89, 0.1) 0%, transparent 50%);
+    z-index: 1 !important; 
+    
+    /* Pola garis diagonal yang jauh lebih nyata tapi tetap elegan */
+    background-image: repeating-linear-gradient(
+        45deg, 
+        rgba(255, 255, 255, 0.06) 0px, 
+        rgba(255, 255, 255, 0.06) 1px, 
+        transparent 1px, 
+        transparent 4px
+    ) !important;
     pointer-events: none;
 }
 
 .card-circle-decor {
-    display: block !important; /* Dihidupkan kembali */
+    display: block !important; 
     position: absolute; top: -30px; right: -30px; 
     width: 120px !important; height: 120px !important;
     background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
     border-radius: 50%; 
-    z-index: 0;
+    z-index: 1 !important;
     filter: blur(3px);
 }
 
-/* Isi Kartu */
+/* Pastikan teks ada di atas tekstur */
 .card-content { 
-    position: relative; z-index: 2; height: 100%; 
+    position: relative; z-index: 2 !important; height: 100%; 
     display: flex; flex-direction: column; justify-content: space-between; 
 }
 
-/* Label Kecil (E-WALLET / BANK / ALAMAT) */
+/* Label Kecil (E-WALLET / BANK) */
 .credit-card .small { 
     font-size: 0.6rem !important; 
     letter-spacing: 1.5px !important; 
@@ -508,14 +516,19 @@ button.btn-buka-final:hover {
     margin-bottom: 2px !important;
 }
 
-/* NAMA PEMILIK */
+/* NAMA PEMILIK (Dinaikkan jaraknya) */
 .credit-card .font-aesthetic { 
     font-family: var(--font-body) !important;
     font-size: 0.8rem !important; 
     letter-spacing: 1px !important; 
     color: var(--cream) !important;
     font-weight: 500;
-    margin-bottom: 2px !important;
+    margin-bottom: 0px !important; /* Jarak bawah dipangkas habis agar naik */
+}
+
+/* Jarak Nomor HP Khusus Kartu Alamat */
+.credit-card p.small.mb-2 {
+    margin-bottom: 4px !important; /* Jarak nomor hp ke alamat dirapatkan */
 }
 
 /* NOMOR REKENING / HP */
@@ -529,34 +542,34 @@ button.btn-buka-final:hover {
     font-style: italic;
 }
 
-/* 2. ALAMAT RUMAH (DIPERKECIL AGAR TIDAK TERPOTONG) */
+/* 3. ALAMAT RUMAH (Bebas tanpa batas potong) */
 .credit-card #textAlamat { 
     font-family: var(--font-body) !important;
-    font-size: 0.65rem !important; /* Ukuran diturunkan agar pas */
-    line-height: 1.3 !important; /* Jarak baris dirapatkan */
+    font-size: 0.65rem !important; 
+    line-height: 1.3 !important; 
     color: var(--cream) !important;
     opacity: 0.9; 
     letter-spacing: 0.3px;
     
-    /* Mencegah teks meluber jika layar terlalu kecil */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; 
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    /* Menghapus aturan pemotongan teks sebelumnya */
+    display: block !important;
+    overflow: visible !important;
+    -webkit-line-clamp: unset !important; 
 }
 
-/* LOGO BANK/SHOPEEPAY (Tetap Siluet Putih Elegan) */
+/* 4. LOGO BANK/SHOPEEPAY (Diperbesar) */
 .credit-card .bg-cream {
     background: transparent !important; 
-    height: 18px !important; width: auto !important; padding: 0 !important;
+    height: 28px !important; /* Tinggi logo dinaikkan drastis dari 18px ke 28px */
+    width: auto !important; padding: 0 !important;
     box-shadow: none !important;
 }
 .credit-card .bg-cream img { 
-    max-height: 100%; width: auto; 
-    filter: brightness(0) invert(1) opacity(0.8); 
+    max-height: 100% !important; width: auto; 
+    filter: brightness(0) invert(1) opacity(0.9); 
 }
 
-/* 3. TOMBOL COPY (DIKEMBALIKAN KE CREAM) */
+/* TOMBOL COPY (TETAP CREAM SESUAI JANJI) */
 .credit-card .btn-light-green {
     padding: 6px 15px !important; 
     font-size: 0.7rem !important; 
@@ -565,7 +578,7 @@ button.btn-buka-final:hover {
     margin-top: 5px !important;
     font-weight: bold !important;
     
-    /* KONDISI NORMAL: Background Cream, Teks Hijau */
+    /* Warna Normal: Cream */
     background-color: var(--cream) !important; 
     color: var(--green) !important;
     border: none !important; 
@@ -573,13 +586,11 @@ button.btn-buka-final:hover {
     transition: all 0.3s ease !important;
     text-transform: uppercase;
 }
-
-/* KONDISI DITEKAN/HOVER: Cream Gelap */
 .credit-card .btn-light-green:hover {
     background-color: var(--cream-dark) !important;
     color: var(--green) !important;
     transform: translateY(-2px);
-}
+}}
 
 /* RSVP Form (Glass Cream) */
 .glass-form {
