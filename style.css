@@ -78,7 +78,8 @@ body {
 /* 2. BAGIAN CREAM (60% ATAS) */
 .hero-content {
     height: 60vh !important;
-    height: 60dvh !important; /* Kunci proporsi 60% */
+    height: 60dvh !important;
+    flex: 0 0 auto !important; /* Jangan biarkan melar/menyusut */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,29 +126,30 @@ body {
 /* 1. KOTAK HIJAU (40% TINGGI) */
 .hero-bottom-wrapper {
     height: 40vh !important;
-    height: 40dvh !important; 
+    height: 40dvh !important;
+    flex: 0 0 auto !important; /* Jangan biarkan melar/menyusut */
     background-color: var(--green-dark); 
     width: 100%;
     
-    /* Sudut Datar/Siku */
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
     
-    padding: 20px 15px 40px 15px !important;
+    /* Padding atas-bawah kita hapus/kecilkan karena posisinya sudah dikendalikan oleh flexbox center */
+    padding: 0 20px !important; 
     
-    /* FLEXBOX UTAMA: Mengatur isi agar terdistribusi rapi */
     display: flex;
     flex-direction: column;
-    justify-content: center !important; /* Isi berada di tengah vertikal */
+    justify-content: center !important; /* Menarik semua isi yang rapat tepat ke tengah-tengah 40% */
     align-items: center;
     text-align: center;
     z-index: 10;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
 }
 
 /* 2. TEKS "THE WEDDING OF" (REVISI: SERIF TEGAK ELEGAN) */
 .the-wedding-text { 
     font-family: var(--font-heading) !important; /* Font Cormorant (Serif) */
-    font-size: 0.9rem !important; 
+    font-size: 0.85rem !important; 
     color: var(--cream) !important; 
     font-weight: 600 !important;
     
@@ -163,12 +165,12 @@ body {
 .nama-mempelai-hero {
     font-family: var(--font-heading), serif;
     /* Ukuran diatur agar pas di dalam kotak 40% (tidak terlalu raksasa sampai kepotong) */
-    font-size: clamp(3.5rem, 10vw, 5.5rem) !important; 
+    font-size: clamp(3.5rem, 10vw, 5rem) !important; 
     font-weight: 600;
     font-style: italic;
     color: var(--cream); 
     line-height: 1 !important;
-    margin: 0 0 10px 0 !important; /* Memberi jarak ke garis */
+    margin: 0 0 8px 0 !important; /* Memberi jarak ke garis */
 }
 
 /* Simbol "&" Emas di tengah nama */
@@ -185,7 +187,7 @@ body {
     border-top: 1px solid var(--cream); 
     opacity: 0.6; 
     width: 60px !important; /* Garis dibuat pendek elegan */
-    margin: 0 auto 15px auto !important; /* Jarak ke Nama Tamu */
+    margin: 0 auto 10px auto !important; /* Jarak ke Nama Tamu */
 }
 
 /* 5. KOTAK TAMU (KEPADA YTH) */
@@ -198,18 +200,25 @@ body {
 }
 
 .kepada-text { 
-    font-size: 0.75rem; color: var(--cream); opacity: 0.8; letter-spacing: 1px; margin-bottom: 2px;
+    font-size: 0.75rem; color: var(--cream); opacity: 0.8; letter-spacing: 1px; margin-bottom: 0 0 2px 0 !important;
 }
 .nama-tamu-final { 
     font-family: var(--font-body); 
     font-size: 1.1rem; 
     font-weight: 700; 
     color: var(--cream); 
-    margin: 2px 0; 
+    margin: 0 !important; 
     text-transform: capitalize;
 }
+
 .maaf-text { 
-    display: none; /* Opsional: Kita sembunyikan teks "maaf salah nama" agar tampilan lebih bersih/elegan */
+    display: block !important; /* Memunculkan kembali teksnya */
+    font-size: 0.55rem !important; /* Ukuran sangat mungil */
+    font-style: italic !important;
+    color: var(--cream) !important; 
+    opacity: 0.6 !important; /* Dibuat agak pudar agar tidak mencolok */
+    margin: 5px 0 0 0 !important; /* Sedikit jarak dari nama tamu di atasnya */
+    letter-spacing: 0.5px !important;
 }
 
 /* 6. TOMBOL BUKA UNDANGAN (MUNGIL) */
@@ -231,9 +240,12 @@ button.btn-buka-final {
 /* KHUSUS HP (MOBILE) - Agar Tetap Rapi */
 @media screen and (max-width: 600px) {
     .bunga-tulip{ width: 125px !important; transform: translateY(8px) !important;}
-    .nama-mempelai-hero { font-size: 3.2rem !important; }
+    .nama-mempelai-hero { font-size: 3.2rem !important; margin-bottom: 5px !important;}
     .the-wedding-text { font-size: 0.75rem !important; letter-spacing: 3px !important; }
-    .hero-bottom-wrapper { padding: 15px 15px 45px 15px !important; }
+    .hero-bottom-wrapper { 
+        padding: 15px 15px 45px 15px !important;
+        height: 40dvh;
+     }
     .tamu-box-final { margin-bottom: 10px !important; }
 }
 
