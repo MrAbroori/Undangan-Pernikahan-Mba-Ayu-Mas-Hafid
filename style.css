@@ -53,10 +53,34 @@ body {
 .ornamen-sisi-kiri { position: absolute; top: 50%; left: -60px; width: 140px; transform: translateY(-50%); opacity: 0.5; z-index: 0; }
 .ornamen-sisi-kanan { position: absolute; top: 50%; right: -60px; width: 140px; transform: translateY(-50%); opacity: 0.5; z-index: 0; }
 .ornamen-pojok-kiri-bawah { position: absolute; bottom: 0; left: 0; width: 130px; z-index: 0; }
-.ornamen-pojok-kanan-bawah { position: absolute; bottom: 0; right: 0; width: 130px; transform: scaleX(-1); z-index: 0; }
+.ornamen-pojok-kanan-bawah {
+    position: absolute;
+    right: 0;
+    
+    /* PERUBAHAN UTAMA: Memindahkan dari Bawah ke Atas */
+    bottom: auto !important; /* Matikan posisi bawah */
+    top: 15% !important;     /* Tempelkan di bagian atas (area The Bride) */
+    
+    width: 130px;            /* Ukuran Desktop */
+    transform: scaleX(-1);   /* Membalik arah bunga agar menghadap ke dalam */
+    z-index: 0;
+    opacity: 0.6;            /* Transparan agar tidak mengganggu teks */
+    pointer-events: none;    /* Agar tidak menghalangi klik */
+}
 
-@media (max-width: 576px) {
-    .ornamen-pojok-kiri-atas, .ornamen-pojok-kanan-atas { width: 110px; }
+@media screen and (max-width: 600px) {
+    .ornamen-pojok-kanan-bawah {
+        /* Di HP, posisikan tepat di samping kanan kartu Bride */
+        top: 5% !important; 
+        width: 100px !important; /* Ukuran disesuaikan agar manis */
+        opacity: 0.5 !important;
+    }
+    
+    /* Opsional: Bunga kiri (bawah) disesuaikan juga biar seimbang */
+    .ornamen-pojok-kiri-bawah {
+        width: 100px !important;
+        bottom: 2% !important;
+    }
 }
 
 /* =========================================
