@@ -238,7 +238,6 @@ button.btn-buka-final:hover {
 /* 1. KELOMPOK TOMBOL UTAMA 
    (Buka Undangan, Kalender, Lokasi, Info Pengiriman, WhatsApp) 
    Normal: Background Hijau, Teks Cream */
-.btn-buka-final,
 .btn-outline-green,
 .btn-custom-green {
     background-color: var(--green) !important;
@@ -618,7 +617,7 @@ button.btn-buka-final:hover {
     background-color: var(--cream-dark) !important;
     color: var(--green) !important;
     transform: translateY(-2px);
-}}
+}
 
 /* RSVP Form (Glass Cream) */
 .glass-form {
