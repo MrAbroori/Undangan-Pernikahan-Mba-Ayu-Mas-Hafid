@@ -446,102 +446,121 @@ button.btn-buka-final:hover {
 .detail-acara p { margin-bottom: 8px; font-weight: 500; }
 
 /* =========================================
-   WEDDING GIFT CARD (REVISI: MUNGIL & BERJARAK KIRI-KANAN)
+   WEDDING GIFT CARD (TEMA KERTAS MATTE EKSKLUSIF)
+   (Lebih elegan, tidak seperti UI Aplikasi Bank)
    ========================================= */
 
-/* Tombol accordion di atasnya juga dibatasi lebarnya */
+/* Batasi lebar tombol accordion di atas kartu */
 .btn-block-custom { 
     width: 100%; 
-    max-width: 280px !important; /* Diperkecil agar serasi dengan kartu */
+    max-width: 290px !important; 
+    margin: 0 auto !important;
 }
 
 .credit-card {
-    /* --- KUNCI PERUBAHAN DI SINI --- */
+    /* Ukuran mungil dengan jarak kiri-kanan yang lega */
     width: 100%;
-    
-    /* 1. Batasi lebar maksimal agar tidak mepet layar HP */
     max-width: 290px !important; 
-    
-    /* 2. Buat rata tengah agar ada jarak kiri-kanan yang seimbang */
     margin: 0 auto 20px auto !important; 
+    height: 175px !important; 
     
-    /* 3. Tinggi dikunci agar mungil */
-    height: 170px !important; 
+    /* Warna solid Hijau Sage pekat (Kesan kertas mahal) */
+    background: var(--green) !important; 
     
-    /* ------------------------------ */
-
-    border-radius: 16px !important; 
-    padding: 18px !important;
-    
-    /* Gradient Hijau Sage */
-    background: linear-gradient(135deg, #4A563A 0%, #5b6946 100%);
+    /* Sudut sedikit lebih tajam (12px) memberikan kesan klasik/kertas potong */
+    border-radius: 12px !important; 
+    padding: 20px !important;
     
     position: relative; 
     overflow: hidden;
     
-    /* Shadow & Border Halus */
-    box-shadow: 0 10px 20px rgba(91, 105, 70, 0.2); 
-    border: 1px solid rgba(255, 255, 255, 0.15); 
+    /* Bayangan sangat lembut agar kartu melayang estetik */
+    box-shadow: 0 10px 30px rgba(74, 86, 58, 0.15) !important; 
+    
+    /* Garis tepi tipis warna Emas/Cream (Kesan tepian foil/cetak mewah) */
+    border: 1px solid rgba(197, 160, 89, 0.4) !important; 
     
     display: flex; flex-direction: column; justify-content: space-between;
 }
 
-/* Texture Garis Halus (Premium Look) */
-.card-bg-texture {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-    opacity: 0.5;
-    background-image: repeating-linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.03) 0px,
-        rgba(255, 255, 255, 0.03) 1px,
-        transparent 1px,
-        transparent 5px
-    );
-    z-index: 0;
+/* HILANGKAN SEMUA TEKSTUR DIGITAL YANG MERUSAK KESAN WEDDING */
+.card-bg-texture, .card-circle-decor {
+    display: none !important; 
 }
 
-/* Dekorasi Lingkaran */
-.card-circle-decor {
-    position: absolute; top: -30px; right: -30px; 
-    width: 100px !important; height: 100px !important;
-    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 50%; z-index: 0;
+/* Isi Kartu */
+.card-content { 
+    position: relative; z-index: 2; height: 100%; 
+    display: flex; flex-direction: column; justify-content: space-between; 
 }
 
-.card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+/* Label Kecil (E-WALLET / BANK / ALAMAT) */
+.credit-card .small { 
+    font-size: 0.65rem !important; 
+    letter-spacing: 1.5px !important; 
+    color: rgba(250, 243, 221, 0.7) !important; /* Cream agak redup */
+    text-transform: uppercase;
+}
 
-/* Font Styles (Disesuaikan dengan kartu mungil) */
-.letter-spacing-2 { letter-spacing: 1px !important; }
+/* NAMA PEMILIK */
+.credit-card .font-aesthetic { 
+    font-family: var(--font-body) !important;
+    font-size: 0.85rem !important; 
+    letter-spacing: 1px !important; 
+    color: var(--cream) !important;
+    font-weight: 500;
+}
 
-.credit-card .font-aesthetic { font-size: 0.85rem !important; letter-spacing: 0.5px; }
-.credit-card .small { font-size: 0.65rem !important; letter-spacing: 0.5px; }
-
-/* Nomor Rekening */
+/* NOMOR REKENING / HP (Ubah ke Font Elegan & Warna Emas) */
 .credit-card h3 { 
-    font-size: 1.1rem !important; 
-    letter-spacing: 2px !important; 
+    font-family: var(--font-heading) !important; /* Tidak pakai font mesin lagi */
+    font-size: 1.5rem !important; 
+    letter-spacing: 3px !important; 
     margin-bottom: 2px !important; 
+    color: var(--gold) !important; /* Warna emas */
+    font-weight: 600 !important;
+    font-style: italic;
 }
 
-/* Alamat */
-.credit-card #textAlamat { font-size: 0.7rem !important; line-height: 1.3; }
+/* ALAMAT RUMAH */
+.credit-card #textAlamat { 
+    font-family: var(--font-body) !important;
+    font-size: 0.75rem !important; 
+    line-height: 1.4 !important; 
+    color: var(--cream) !important;
+    opacity: 0.9; 
+    letter-spacing: 0.5px;
+}
 
-/* Logo Bank/Ewallet */
+/* LOGO BANK/SHOPEEPAY (Dibuat menyatu, kotak putih dihapus) */
 .credit-card .bg-cream {
-    height: 22px !important; width: 38px !important; padding: 3px !important;
-    display: flex; align-items: center; justify-content: center;
+    background: transparent !important; /* Hilangkan kotak putih */
+    height: 18px !important; width: auto !important; padding: 0 !important;
+    box-shadow: none !important;
 }
-.credit-card .bg-cream img { max-height: 100%; width: auto; }
+.credit-card .bg-cream img { 
+    max-height: 100%; width: auto; 
+    /* Trik CSS ajaib: Mengubah logo berwarna menjadi siluet putih transparan agar eksklusif */
+    filter: brightness(0) invert(1) opacity(0.8); 
+}
 
-/* Tombol Copy (Cream) */
+/* TOMBOL COPY (Gaya Outline Minimalis) */
 .credit-card .btn-light-green {
-    padding: 6px 10px !important; 
+    padding: 6px 12px !important; 
     font-size: 0.7rem !important; 
+    letter-spacing: 1px !important;
     border-radius: 6px !important; 
     margin-top: 5px !important;
+    background-color: transparent !important; /* Transparan */
+    color: var(--cream) !important;
+    border: 1px solid rgba(250, 243, 221, 0.4) !important; /* Garis tipis cream */
+    box-shadow: none !important;
+    transition: all 0.3s ease !important;
+    text-transform: uppercase;
+}
+.credit-card .btn-light-green:hover {
     background-color: var(--cream) !important;
     color: var(--green) !important;
-    border: none !important;
 }
 
 /* RSVP Form (Glass Cream) */
