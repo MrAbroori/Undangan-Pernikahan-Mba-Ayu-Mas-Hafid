@@ -159,7 +159,7 @@ body {
     border-top-right-radius: 0 !important;
     
     /* Padding atas-bawah kita hapus/kecilkan karena posisinya sudah dikendalikan oleh flexbox center */
-    padding: 0 20px !important; 
+    padding: 10 15px !important; 
     
     display: flex;
     flex-direction: column;
@@ -168,6 +168,8 @@ body {
     text-align: center;
     z-index: 10;
     box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+
+    overflow: hidden;
 }
 
 /* 2. TEKS "THE WEDDING OF" (REVISI: SERIF TEGAK ELEGAN) */
@@ -181,7 +183,7 @@ body {
     text-transform: uppercase !important; 
     letter-spacing: 4px !important; 
     
-    margin: 0 0 2px 0 !important; /* Jarak ke nama mempelai */
+    margin: 0 !important; /* Jarak ke nama mempelai */
     opacity: 0.9 !important;
 }
 
@@ -189,20 +191,12 @@ body {
 .nama-mempelai-hero {
     font-family: var(--font-heading), serif;
     /* Ukuran diatur agar pas di dalam kotak 40% (tidak terlalu raksasa sampai kepotong) */
-    font-size: clamp(3.5rem, 10vw, 5rem) !important; 
+    font-size: clamp(2.5rem, 8vw, 4rem) !important; 
     font-weight: 600;
     font-style: italic;
     color: var(--cream); 
     line-height: 1 !important;
-    margin: 0 0 8px 0 !important; /* Memberi jarak ke garis */
-}
-
-/* Simbol "&" Emas di tengah nama */
-.nama-mempelai-hero .dan-simbol-emas {
-    font-family: var(--font-script);
-    font-size: 0.8em !important; /* Sedikit lebih kecil dari huruf nama */
-    color: var(--gold-accent) !important;
-    font-weight: normal;
+    margin: 2px 0 5px 0 !important; /* Memberi jarak ke garis */
 }
 
 /* 4. GARIS PEMBATAS (DIVIDER) */
@@ -211,7 +205,7 @@ body {
     border-top: 1px solid var(--cream); 
     opacity: 0.6; 
     width: 60px !important; /* Garis dibuat pendek elegan */
-    margin: 0 auto 10px auto !important; /* Jarak ke Nama Tamu */
+    margin: 0 auto 5px auto !important; /* Jarak ke Nama Tamu */
 }
 
 /* 5. KOTAK TAMU (KEPADA YTH) */
@@ -220,11 +214,11 @@ body {
     background: transparent !important; 
     border: none !important; 
     padding: 0; 
-    margin: 0 0 10px 0 !important; /* Jarak ke Tombol Buka */
+    margin: 0 0 5px 0 !important; /* Jarak ke Tombol Buka */
 }
 
 .kepada-text { 
-    font-size: 0.75rem; color: var(--cream); opacity: 0.8; letter-spacing: 1px; margin-bottom: 0 0 2px 0 !important;
+    font-size: 0.65rem; color: var(--cream); opacity: 0.8; letter-spacing: 1px; margin-bottom: 0 0 2px 0 !important;
 }
 .nama-tamu-final { 
     font-family: var(--font-body); 
@@ -250,9 +244,9 @@ button.btn-buka-final {
     background-color: var(--cream) !important; 
     color: var(--green) !important;
     border: 1px solid var(--cream) !important;
-    padding: 10px 30px; 
+    padding: 8px 25px; 
     border-radius: 50px;
-    font-size: 0.75rem; 
+    font-size: 0.7rem; 
     letter-spacing: 2px;
     font-weight: 700;
     text-transform: uppercase; 
