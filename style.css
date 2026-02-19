@@ -1614,3 +1614,65 @@ section#closing p.fw-bold {
 .nama-mempelai-footer .dan-simbol-emas {
      font-size: clamp(2rem, 5vw, 2.8rem) !important; /* Sama persis dengan Page 1 */
 }
+
+/* =========================================
+   REVISI KESERAGAMAN FOTO: PAGE 1 & CLOSING
+   (UKURAN BESAR PAGE 1 + DESAIN KUBAH CLOSING)
+   ========================================= */
+
+/* --- 1. FRAME FOTO PAGE 1 --- */
+#page-1 .frame-lingkaran {
+    /* Ukuran Besar (Dari Page 1) */
+    width: clamp(220px, 55vw, 320px) !important;
+    height: clamp(310px, 75vw, 450px) !important;
+    
+    /* Desain Kubah (Atas Lengkung, Bawah Datar/Siku dari Closing) */
+    border-radius: 200px 200px 0 0 !important; 
+    
+    border: 3px solid var(--green) !important;
+    margin: 60px auto 30px auto !important; /* Posisi aman tidak nabrak atas */
+    
+    /* Pengaturan agar gambar di dalam duduk mantap */
+    display: flex; 
+    align-items: flex-end !important; 
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: inset 0 -25px 30px -10px rgba(91, 105, 70, 0.3), 
+                0 10px 20px rgba(91, 105, 70, 0.1) !important;
+    overflow: hidden !important; 
+}
+
+/* --- 2. FRAME FOTO CLOSING --- */
+section#closing .frame-lingkaran {
+    /* Ukuran Besar (SAMA PERSIS DENGAN PAGE 1) */
+    width: clamp(220px, 55vw, 320px) !important;
+    height: clamp(310px, 75vw, 450px) !important;
+    
+    /* Desain Kubah (SAMA PERSIS) */
+    border-radius: 200px 200px 0 0 !important; 
+    
+    border: 3px solid var(--green) !important;
+    margin: 10px auto 0 auto !important; /* Menempel mantap ke dasar halaman */
+    
+    /* Pengaturan agar gambar di dalam duduk mantap */
+    display: flex; 
+    align-items: flex-end !important; 
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 -5px 20px rgba(91, 105, 70, 0.1) !important;
+    overflow: hidden !important;
+    
+    position: relative;
+    bottom: -5px; /* Menutup celah di bawah */
+}
+
+/* --- 3. GAMBAR PENGANTIN (UNTUK KEDUANYA) --- */
+/* Memastikan gambar di Page 1 dan Closing sama-sama membumi (tidak melayang) */
+#page-1 .img-berdua,
+section#closing .img-berdua {
+    width: auto !important;
+    height: 100% !important; /* Mengisi penuh ke bawah */
+    max-width: 98% !important;
+    margin-bottom: 0 !important; /* Nempel ke garis batas bawah */
+    filter: none !important; /* Menghilangkan bayangan melayang */
+}
