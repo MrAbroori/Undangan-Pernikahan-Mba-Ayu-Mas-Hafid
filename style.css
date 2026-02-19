@@ -47,27 +47,6 @@ body {
 .bg-green { background-color: var(--green) !important; }
 .letter-spacing-small { letter-spacing: 3px; font-size: 0.75rem; }
 
-/* --- ORNAMENTS --- */
-.ornamen-pojok-kiri-atas { position: absolute; top: 0; left: 0; width: 160px; opacity: 0.5 !important; z-index: 0; }
-.ornamen-pojok-kanan-atas { position: absolute; top: 0; right: 0; width: 160px; transform: scaleX(-1); opacity: 0.5 !important; z-index: 0; }
-.ornamen-sisi-kiri { position: absolute; top: 50%; left: -60px; width: 140px; transform: translateY(-50%); opacity: 0.4 !important; z-index: 0; }
-.ornamen-sisi-kanan { position: absolute; top: 50%; right: -60px; width: 140px; transform: translateY(-50%); opacity: 0.4 !important; z-index: 0; }
-.ornamen-pojok-kiri-bawah { position: absolute; bottom: 0; left: 0; width: 130px; z-index: 0; opacity: 0.5;}
-.ornamen-pojok-kanan-bawah {
-    position: absolute;
-    right: 0;
-    
-    /* PERUBAHAN UTAMA: Memindahkan dari Bawah ke Atas */
-    bottom: auto !important; /* Matikan posisi bawah */
-    top: 15% !important;     /* Tempelkan di bagian atas (area The Bride) */
-    
-    width: 130px;            /* Ukuran Desktop */
-    transform: scaleX(-1);   /* Membalik arah bunga agar menghadap ke dalam */
-    z-index: 0;
-    opacity: 0.6;            /* Transparan agar tidak mengganggu teks */
-    pointer-events: none;    /* Agar tidak menghalangi klik */
-}
-
 @media screen and (max-width: 600px) {
     .ornamen-pojok-kanan-bawah {
         /* Di HP, posisikan tepat di samping kanan kartu Bride */
@@ -275,7 +254,7 @@ button.btn-buka-final {
 .the-wedding-text {
     color: var(--cream) !important; 
     font-family: var(--font-body), sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.55rem;
     letter-spacing: 3px;
     font-weight: 600;
     margin: 0 0 10px 0;
@@ -1675,4 +1654,25 @@ section#closing .img-berdua {
     margin-bottom: -1 !important; /* Nempel ke garis batas bawah */
     filter: drop-shadow(0 4px 5px rgba(91, 105, 70, 0.2)) !important;
     transition: all 0.5s ease;
+}
+
+/* --- ORNAMENTS --- */
+.ornamen-pojok-kiri-atas { position: absolute; top: 0; left: 0; width: 160px; opacity: 0.5 !important; z-index: 0; }
+.ornamen-pojok-kanan-atas { position: absolute; top: 0; right: 0; width: 160px; transform: scaleX(-1); opacity: 0.5 !important; z-index: 0; }
+.ornamen-sisi-kiri { position: absolute; top: 50%; left: -60px; width: 140px; transform: translateY(-50%); opacity: 0.4 !important; z-index: 0; }
+.ornamen-sisi-kanan { position: absolute; top: 50%; right: -60px; width: 140px; transform: translateY(-50%); opacity: 0.4 !important; z-index: 0; }
+.ornamen-pojok-kiri-bawah { position: absolute; bottom: 0; left: 0; width: 130px; z-index: 0; opacity: 0.5;}
+.ornamen-pojok-kanan-bawah {
+    position: absolute;
+    right: 0;
+    
+    /* PERUBAHAN UTAMA: Memindahkan dari Bawah ke Atas */
+    bottom: auto !important; /* Matikan posisi bawah */
+    top: 15% !important;     /* Tempelkan di bagian atas (area The Bride) */
+    
+    width: 130px;            /* Ukuran Desktop */
+    transform: scaleX(-1);   /* Membalik arah bunga agar menghadap ke dalam */
+    z-index: 0;
+    opacity: 0.6;            /* Transparan agar tidak mengganggu teks */
+    pointer-events: none;    /* Agar tidak menghalangi klik */
 }
