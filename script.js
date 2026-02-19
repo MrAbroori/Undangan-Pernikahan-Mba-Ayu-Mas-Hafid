@@ -1,8 +1,6 @@
 // ============================================================================
 // 1. KONFIGURASI UTAMA
 // ============================================================================
-// PENTING: Ganti URL ini dengan URL Web App Google Script TERBARU (akhiran /exec)
-// Caranya: Deploy > Manage Deployments > Edit (Pensil) > New Version > Deploy
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTiEtQCn3eMn4kbw6bvYfdjOZRoS3vkOVdaMa9KFtrPT-nahpU41tRGtIHt8G6VTr0LQ/exec'; 
 
 // Tanggal Acara: Tahun, Bulan (0-11), Tanggal, Jam
