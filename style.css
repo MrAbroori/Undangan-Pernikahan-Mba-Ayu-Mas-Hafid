@@ -1203,42 +1203,52 @@ section#closing p.fw-bold {
 }
 
 /* =========================================
-   REVISI JARAK INISIAL A & H (ANTI-DEMPET)
+   REVISI INISIAL A & H (UKURAN RAKSASA & LEGA)
    ========================================= */
 
-/* 1. Jarak Lebar untuk Desktop/Layar Besar */
-.huruf-a { 
-    top: 0; left: 0; 
-    transform: translate(-30px, -20px) !important; /* Ditarik menjauh ke kiri atas */
-}
-.huruf-h { 
-    bottom: 0; right: 0; 
-    transform: translate(30px, 20px) !important; /* Ditarik menjauh ke kanan bawah */
+/* 1. SETTING UNTUK LAYAR KOMPUTER (DESKTOP) */
+.inisial-box-final {
+    width: 350px !important; /* Wadah diperlebar agar muat */
+    height: 350px !important;
+    margin-bottom: 20px !important;
 }
 
-/* 2. Jarak Presisi untuk Layar HP (Mobile) */
+.inisial-huruf {
+    font-size: 12rem !important; /* Huruf diperbesar drastis */
+}
+
+/* Posisi ditarik menjauh agar tidak menabrak bunga */
+.huruf-a { transform: translate(-50px, -30px) !important; }
+.huruf-h { transform: translate(50px, 30px) !important; }
+
+
+/* 2. SETTING KHUSUS HP (MOBILE) - AGAR PAS DI LAYAR */
 @media screen and (max-width: 600px) {
-    /* Lebarkan sedikit kotaknya agar punya ruang */
-    .inisial-box-final { 
-        width: 150px !important; 
-        height: 160px !important; 
+    .inisial-box-final {
+        /* Wadah diperbesar signifikan (sebelumnya kecil) */
+        width: 240px !important; 
+        height: 240px !important;
     }
-    
-    .inisial-huruf { 
-        font-size: 5.5rem !important; 
+
+    .inisial-huruf {
+        /* Ukuran huruf diperbesar pas memenuhi tengah layar */
+        font-size: 8.5rem !important; 
     }
-    
-    /* KUNCI: Menarik huruf ke arah luar, bukan ke dalam */
+
+    /* Bunga di tengah ikut diperbesar sedikit agar seimbang */
+    .bunga-tulip {
+        width: 90px !important;
+        transform: translateY(5px) !important;
+    }
+
+    /* Jarak huruf ditarik lebih jauh ke pojok agar lega */
     .huruf-a { 
-        transform: translate(-10px, -10px) !important; /* Tarik ke kiri atas */
-    }
-    .huruf-h { 
-        transform: translate(10px, 15px) !important; /* Tarik ke kanan bawah */
+        top: 0 !important; left: 0 !important;
+        transform: translate(-10px, -10px) !important; 
     }
     
-    /* Menyesuaikan posisi bunga di tengah */
-    .bunga-tulip { 
-        width: 65px !important; 
-        transform: translateY(5px) !important; 
+    .huruf-h { 
+        bottom: 0 !important; right: 0 !important;
+        transform: translate(10px, 10px) !important; 
     }
 }
