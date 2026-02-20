@@ -1687,94 +1687,105 @@ section#closing .img-berdua {
     pointer-events: none;    /* Agar tidak menghalangi klik */
 }
 
+/* =========================================
+   REVISI TOTAL: ORNAMEN ENDING & CREDIT FOOTER
+   ========================================= */
+
+/* 1. CONTAINER ORNAMEN */
+.ornamen-ending-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px !important; /* Jarak dari teks / foto di atasnya */
+    margin-bottom: 25px !important; /* Jarak menuju teks Music By */
+}
+
+/* 2. ORNAMEN SVG (ANTI-DOUBLE & PROPORSIONAL) */
 .icon-ending {
-    /* 1. KITA PERBESAR WADAHNYA AGAR GAMBAR TIDAK MENGECIL */
-    width: 200px !important; 
-    height: 80px !important; 
+    width: 180px !important; /* Ukuran dilebarkan */
+    height: 60px !important; /* Tinggi disesuaikan */
     
-    /* Warna Hijau */
-    background-color: var(--green) !important; 
+    background-color: var(--green) !important; /* Warna Hijau */
     
-    /* 2. KITA PISAHKAN PERINTAHNYA SATU PER SATU AGAR TIDAK BERULANG (DOUBLE) */
+    /* Perintah dipisah satu per satu agar browser HP tidak bingung */
     -webkit-mask-image: url('assets/ending.svg') !important;
     -webkit-mask-size: contain !important;
-    -webkit-mask-repeat: no-repeat !important; /* Memaksa agar hanya muncul 1 kali */
+    -webkit-mask-repeat: no-repeat !important; /* KUNCI: Mencegah gambar muncul 2x */
     -webkit-mask-position: center !important;
     
     mask-image: url('assets/ending.svg') !important;
     mask-size: contain !important;
-    mask-repeat: no-repeat !important; /* Memaksa agar hanya muncul 1 kali */
+    mask-repeat: no-repeat !important; /* KUNCI: Mencegah gambar muncul 2x */
     mask-position: center !important;
 }
 
-/* KHUSUS HP (MOBILE) */
-@media screen and (max-width: 600px) {
-    .icon-ending {
-        /* Ukuran di HP juga disesuaikan agar tetap terlihat jelas */
-        width: 150px !important; 
-        height: 60px !important;
-    }
-}
-
-/* 3. FOOTER CREDIT (MUSIC & CREATOR) */
+/* 3. CONTAINER CREDIT (DENGAN JARAK BAWAH SUPER PANJANG) */
 .footer-credit {
-    margin-top: 30px !important; /* Jarak dari ornamen SVG di atasnya */
-    
-    /* KUNCI PENTING: Jarak kosong ekstra ke bawah layar agar tidak mepet */
-    padding-bottom: 80px !important; 
-    
-    color: var(--green) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    color: var(--green) !important;
+    
+    /* KUNCI: Jarak kosong panjang di bagian paling bawah halaman */
+    padding-bottom: 150px !important; 
 }
 
+/* 4. TEKS MUSIC BY */
 .music-credit {
-    font-size: 0.65rem !important; 
+    font-family: var(--font-body) !important;
+    font-size: 0.7rem !important; 
     letter-spacing: 1px !important;
-    opacity: 0.7 !important; 
-    margin-bottom: 15px !important;
-    text-align: center;
+    opacity: 0.8 !important; 
+    margin-bottom: 20px !important;
 }
 
 .music-credit i {
-    font-size: 0.6rem !important;
-    opacity: 0.8 !important;
+    font-size: 0.65rem !important;
+    margin-right: 5px !important;
 }
 
+/* 5. TEKS DIGITAL INVITATION */
 .digital-invitation {
-    font-size: 0.6rem !important;
-    letter-spacing: 3px !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 4px !important;
     text-transform: uppercase !important;
     opacity: 0.6 !important;
-    margin-bottom: 5px !important;
+    margin-bottom: 8px !important;
 }
 
+/* 6. TEKS MADE BY */
 .made-by {
     font-family: var(--font-heading) !important; /* Menggunakan font estetik */
-    font-size: 1.1rem !important;
+    font-size: 1.2rem !important;
     font-weight: 600 !important;
+    font-style: italic !important;
     opacity: 0.9 !important;
     margin-bottom: 0 !important;
 }
 
-/* 4. KHUSUS HP (MOBILE) */
+/* =========================================
+   PENYESUAIAN KHUSUS HP (MOBILE)
+   ========================================= */
 @media screen and (max-width: 600px) {
     .icon-ending {
-        width: 100px; 
-        height: 35px;
+        width: 140px !important; 
+        height: 50px !important;
     }
     
     .footer-credit {
-        /* Di HP, jarak kosong bawah dibuat lebih besar lagi 
-           agar nyaman saat di-scroll pakai jempol */
-        padding-bottom: 100px !important; 
+        /* Jarak kosong bawah diperpanjang lagi di HP agar saat 
+           di-scroll mentok, teksnya posisinya ada di tengah layar */
+        padding-bottom: 200px !important; 
     }
     
     .music-credit {
         font-size: 0.6rem !important;
-        padding: 0 15px !important; /* Agar teks panjang tidak menabrak pinggir layar */
-        line-height: 1.5 !important;
+        padding: 0 15px !important; /* Agar teks panjang tidak menabrak tepi HP */
+        line-height: 1.6 !important;
     }
 }
+
