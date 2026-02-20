@@ -13,7 +13,7 @@
    ========================================= */
 html, body {
     max-width: 100%;
-    overflow-x: hidden !important; /* KUNCI: Matikan scroll horizontal */
+    overflow-x: hidden !important;
     position: relative;
 }
 
@@ -1685,4 +1685,56 @@ section#closing .img-berdua {
     z-index: 0;
     opacity: 0.6;            /* Transparan agar tidak mengganggu teks */
     pointer-events: none;    /* Agar tidak menghalangi klik */
+}
+
+/* =========================================
+   FOOTER CREDIT (MUSIC & CREATOR)
+   ========================================= */
+.icon-ending {
+    width: 120px; 
+    height: 40px; 
+    
+    /* Gunakan warna HIJAU agar terlihat di atas background CREAM */
+    background-color: var(--green) !important; 
+    
+    -webkit-mask: url('assets/ending.svg') no-repeat center / contain;
+    mask: url('assets/ending.svg') no-repeat center / contain;
+}
+
+   .footer-credit {
+    margin-top: 40px !important; /* Jarak dari ornamen ending ke teks ini */
+    padding-bottom: 20px !important;
+    color: var(--green) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-credit {
+    font-size: 0.65rem !important; /* Ukuran mungil */
+    letter-spacing: 1px !important;
+    opacity: 0.7 !important; /* Agak pudar agar elegan */
+    margin-bottom: 15px !important;
+}
+
+.digital-invitation {
+    font-size: 0.6rem !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    opacity: 0.6 !important;
+    margin-bottom: 2px !important;
+}
+
+.made-by {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    opacity: 0.9 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Penyesuaian ikon musik */
+.music-credit i {
+    font-size: 0.6rem !important;
+    opacity: 0.8 !important;
 }
