@@ -1688,22 +1688,38 @@ section#closing .img-berdua {
 }
 
 /* =========================================
-   FOOTER CREDIT (MUSIC & CREATOR)
+   REVISI FINAL CLOSING: ORNAMEN & CREDIT TITLE
    ========================================= */
+
+/* 1. WADAH ORNAMEN ENDING */
+.ornamen-ending-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* 2. TRIK MEWARNAI SVG MENJADI HIJAU */
 .icon-ending {
     width: 120px; 
     height: 40px; 
     
-    /* Gunakan warna HIJAU agar terlihat di atas background CREAM */
+    /* KUNCI: Warna Hijau agar menonjol di atas background Cream */
     background-color: var(--green) !important; 
     
+    /* Mengambil bentuk siluet dari file SVG */
     -webkit-mask: url('assets/ending.svg') no-repeat center / contain;
     mask: url('assets/ending.svg') no-repeat center / contain;
 }
 
-   .footer-credit {
-    margin-top: 40px !important; /* Jarak dari ornamen ending ke teks ini */
-    padding-bottom: 20px !important;
+/* 3. FOOTER CREDIT (MUSIC & CREATOR) */
+.footer-credit {
+    margin-top: 30px !important; /* Jarak dari ornamen SVG di atasnya */
+    
+    /* KUNCI PENTING: Jarak kosong ekstra ke bawah layar agar tidak mepet */
+    padding-bottom: 80px !important; 
+    
     color: var(--green) !important;
     display: flex;
     flex-direction: column;
@@ -1712,10 +1728,16 @@ section#closing .img-berdua {
 }
 
 .music-credit {
-    font-size: 0.65rem !important; /* Ukuran mungil */
+    font-size: 0.65rem !important; 
     letter-spacing: 1px !important;
-    opacity: 0.7 !important; /* Agak pudar agar elegan */
+    opacity: 0.7 !important; 
     margin-bottom: 15px !important;
+    text-align: center;
+}
+
+.music-credit i {
+    font-size: 0.6rem !important;
+    opacity: 0.8 !important;
 }
 
 .digital-invitation {
@@ -1723,18 +1745,33 @@ section#closing .img-berdua {
     letter-spacing: 3px !important;
     text-transform: uppercase !important;
     opacity: 0.6 !important;
-    margin-bottom: 2px !important;
+    margin-bottom: 5px !important;
 }
 
 .made-by {
-    font-size: 1rem !important;
+    font-family: var(--font-heading) !important; /* Menggunakan font estetik */
+    font-size: 1.1rem !important;
     font-weight: 600 !important;
     opacity: 0.9 !important;
     margin-bottom: 0 !important;
 }
 
-/* Penyesuaian ikon musik */
-.music-credit i {
-    font-size: 0.6rem !important;
-    opacity: 0.8 !important;
+/* 4. KHUSUS HP (MOBILE) */
+@media screen and (max-width: 600px) {
+    .icon-ending {
+        width: 100px; 
+        height: 35px;
+    }
+    
+    .footer-credit {
+        /* Di HP, jarak kosong bawah dibuat lebih besar lagi 
+           agar nyaman saat di-scroll pakai jempol */
+        padding-bottom: 100px !important; 
+    }
+    
+    .music-credit {
+        font-size: 0.6rem !important;
+        padding: 0 15px !important; /* Agar teks panjang tidak menabrak pinggir layar */
+        line-height: 1.5 !important;
+    }
 }
