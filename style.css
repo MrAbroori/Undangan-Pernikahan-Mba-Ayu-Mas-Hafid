@@ -1702,17 +1702,28 @@ section#closing .img-berdua {
 }
 
 /* 2. ORNAMEN SVG (ANTI-DOUBLE & PROPORSIONAL) */
+/* =========================================
+   FOKUS 1 KODE SAJA (UKURAN BESAR & ANTI-DOUBLE)
+   ========================================= */
+
 .icon-ending {
-    width: 280px !important; /* Ukuran dilebarkan */
-    height: 70px !important; /* Tinggi disesuaikan */
+    width: 280px !important; 
+    height: 70px !important; 
     
-    background-color: var(--green) !important; /* Warna Hijau */
+    background-color: var(--green) !important; 
     
-    /* Perintah dipisah satu per satu agar browser HP tidak bingung */
     -webkit-mask-image: url('assets/ending.png') !important;
     -webkit-mask-size: contain !important;
-    -webkit-mask-repeat: no-repeat !important; /* KUNCI: Mencegah gambar muncul 2x */
+    -webkit-mask-repeat: no-repeat !important; 
     -webkit-mask-position: center !important;
+}
+
+/* Penyesuaian khusus layar HP agar tidak terpotong ke samping */
+@media screen and (max-width: 600px) {
+    .icon-ending {
+        width: 220px !important; 
+        height: 55px !important;
+    }
 }
 
 /* 3. CONTAINER CREDIT (DENGAN JARAK BAWAH SUPER PANJANG) */
