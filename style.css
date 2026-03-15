@@ -125,12 +125,14 @@ body {
 .huruf-h { bottom: 0; right: 0; transform: translate(30px, 20px) !important; }
 
 .bunga-tulip {
-    width: 170px !important; /* Bunga tulip tengah ikut membesar */
+    width: 170px !important; 
     z-index: 2;
     transform: translateY(15px) !important;
-    filter: drop-shadow(0 5px 15px rgba(74, 93, 67, 0.2));
+    
+    /* Tambahan efek agar gambar samar dan menyatu */
+    opacity: 0.5 !important; /* Mengurangi ketajaman warna (transparan 50%) */
+    filter: blur(3px) drop-shadow(0 5px 15px rgba(74, 93, 67, 0.2)) !important; /* Menambahkan efek blur */
 }
-
 
 /* =========================================
    REVISI FINAL HERO BAWAH (PROPORSIOAL & ELEGAN)
