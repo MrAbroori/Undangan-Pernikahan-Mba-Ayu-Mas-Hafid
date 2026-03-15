@@ -1809,14 +1809,8 @@ section#closing .img-berdua {
 }
 
 .bunga-shaf {
-    width: 30px;             /* Ukuran masing-masing bunga (sesuaikan jika perlu) */
+    width: 50px;             /* Ukuran masing-masing bunga (sesuaikan jika perlu) */
     height: auto;
     /* Opsional: Tambahkan animasi ringan agar terlihat lebih hidup */
     transition: transform 0.3s ease; 
 }
-
-/* Penyesuaian untuk layar HP */
-@media screen and (max-width: 600px) {
-    .shaf-bunga-container {
-        gap: 10px;           /* Jarak diperkecil di HP */
-    }
