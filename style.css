@@ -128,10 +128,6 @@ body {
     width: 170px !important; 
     z-index: 2;
     transform: translateY(15px) !important;
-    
-    /* Tambahan efek agar gambar samar dan menyatu */
-    opacity: 0.5 !important; /* Mengurangi ketajaman warna (transparan 50%) */
-    filter: blur(3px) drop-shadow(0 5px 15px rgba(74, 93, 67, 0.2)) !important; /* Menambahkan efek blur */
 }
 
 /* =========================================
