@@ -127,7 +127,8 @@ body {
 .bunga-tulip {
     z-index: 2;
     transform: translateY(15px) !important;
-    filter: none !important; 
+    box-shadow: none;
+    filter: none !important;
 }
 
 /* =========================================
