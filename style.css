@@ -124,8 +124,7 @@ body {
 .huruf-a { top: 0; left: 0; transform: translate(-30px, -20px) !important; }
 .huruf-h { bottom: 0; right: 0; transform: translate(30px, 20px) !important; }
 
-.bunga-tulip {
-    width: 170px !important; 
+.bunga-tulip { 
     z-index: 2;
     transform: translateY(15px) !important;
 }
