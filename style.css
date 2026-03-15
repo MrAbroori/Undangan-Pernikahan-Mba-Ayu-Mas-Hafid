@@ -113,7 +113,7 @@ body {
 
 .inisial-huruf {
     font-family: var(--font-heading), serif;
-    font-size: 15rem !important; /* Font dinaikkan agar raksasa */
+    font-size: 15rem !important;
     color: var(--green-dark);
     line-height: 1;
     position: absolute;
