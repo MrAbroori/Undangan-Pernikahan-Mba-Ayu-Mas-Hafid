@@ -1795,3 +1795,32 @@ section#closing .img-berdua {
     }
 }
 
+/* =========================================
+   BARISAN BUNGA (SHAF) DI FOOTER
+   ========================================= */
+
+.shaf-bunga-container {
+    display: flex;
+    justify-content: center; /* Menyusun bunga di tengah */
+    align-items: center;     /* Meratakan posisi vertikal */
+    gap: 15px;               /* Jarak antar bunga */
+    width: 100%;
+    opacity: 0.7;            /* Membuat bunganya sedikit samar */
+}
+
+.bunga-shaf {
+    width: 30px;             /* Ukuran masing-masing bunga (sesuaikan jika perlu) */
+    height: auto;
+    /* Opsional: Tambahkan animasi ringan agar terlihat lebih hidup */
+    transition: transform 0.3s ease; 
+}
+
+/* Penyesuaian untuk layar HP */
+@media screen and (max-width: 600px) {
+    .shaf-bunga-container {
+        gap: 10px;           /* Jarak diperkecil di HP */
+    }
+    .bunga-shaf {
+        width: 20px;         /* Ukuran bunga diperkecil di HP */
+    }
+}
